@@ -36,8 +36,6 @@ void VisSimReporter::visitDigitalProbe(DigitalProbe*  digp)
 //	convert << Number;      // insert the textual representation of 'Number' in the characters in the stream
 //	Result = convert.str(); // set 'Result' to the contents of the stream
 
-	string outFileName=path + "Sonda_" /*+ name*/ + num;
-
 	if(path.empty())
 	{
 		writeChanges(cout, digp);
@@ -45,10 +43,9 @@ void VisSimReporter::visitDigitalProbe(DigitalProbe*  digp)
 
 	else
 	{
-		outFileName=path + "Sonda_" /*+ name*/ + num + ".log";
+		string outFileName=path + "sonda_" /*+ name*/ + num + ".log";
 
 		ofstream outFile(outFileName.c_str(), ios::out);
-
 
 		writeChanges(outFile, digp);
 

@@ -201,6 +201,7 @@ void visStatistics::visitClkSource(ClockSource* source)
 
 void visStatistics::writeStats()
 {
+	// TODO outpath should be ending with "/" otherwise not working!
 	string outPath = Reader::Instance()->getData()->getOutPath();
 	string outFileName = outPath + "statistika.log";
 	ofstream outFile(outFileName.c_str(), ios::out);
