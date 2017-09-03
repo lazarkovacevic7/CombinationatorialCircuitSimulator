@@ -1,0 +1,235 @@
+*version 9.1 105297624
+u 329
+U? 12
+? 2
+@libraries
+@analysis
+.TRAN 1 0 0 0
++0 0ns
++1 10us
+@targets
+@attributes
+@translators
+a 0 u 13 0 0 0 hln 100 PCBOARDS=PCB
+a 0 u 13 0 0 0 hln 100 PSPICE=PSPICE
+a 0 u 13 0 0 0 hln 100 XILINX=XILINX
+@setup
+unconnectedPins 0
+connectViaLabel 0
+connectViaLocalLabels 0
+NoStim4ExtIFPortsWarnings 1
+AutoGenStim4ExtIFPorts 1
+@index
+pageloc 1 0 3899 
+@status
+c 109:11:12:15:53:12;1260629592
+n 0 110:00:30:03:10:37;1264817437 e 
+s 2832 110:00:30:03:10:40;1264817440 e 
+*page 1 0 970 720 iA
+@ports
+port 143 GLOBAL 680 320 u
+a 0 xr 3 0 20 8 hcn 100 LABEL=SONDA_8
+@parts
+part 218 7408 380 240 h
+a 0 x 0:13 0 0 0 hln 100 PKGREF=I_5
+a 0 xp 9 0 40 0 hln 100 REFDES=I_5A
+a 0 sp 11 0 40 50 hln 100 PART=7408
+a 0 s 0:13 0 0 0 hln 100 PKGTYPE=DIP14
+a 0 s 0:13 0 0 0 hln 100 GATE=A
+part 5 7432 220 260 h
+a 0 sp 11 0 40 50 hln 100 PART=7432
+a 0 s 0:13 0 0 0 hln 100 PKGTYPE=DIP14
+a 0 s 0:13 0 0 0 hln 100 GATE=A
+a 0 x 0:13 0 0 0 hln 100 PKGREF=ILI_2
+a 0 xp 9 0 40 0 hln 100 REFDES=ILI_2A
+part 9 7408 220 180 h
+a 0 sp 11 0 40 50 hln 100 PART=7408
+a 0 s 0:13 0 0 0 hln 100 PKGTYPE=DIP14
+a 0 s 0:13 0 0 0 hln 100 GATE=A
+a 0 x 0:13 0 0 0 hln 100 PKGREF=I_1
+a 0 xp 9 0 40 0 hln 100 REFDES=I_1A
+part 219 7408 380 380 h
+a 0 x 0:13 0 0 0 hln 100 PKGREF=I_6
+a 0 xp 9 0 40 0 hln 100 REFDES=I_6A
+a 0 sp 11 0 40 50 hln 100 PART=7408
+a 0 s 0:13 0 0 0 hln 100 PKGTYPE=DIP14
+a 0 s 0:13 0 0 0 hln 100 GATE=A
+part 2 7404 220 340 h
+a 0 sp 11 0 40 40 hln 100 PART=7404
+a 0 s 0:13 0 0 0 hln 100 PKGTYPE=DIP14
+a 0 s 0:13 0 0 0 hln 100 GATE=A
+a 0 x 0:13 0 0 0 hln 100 PKGREF=NE_3
+a 0 xp 9 0 28 8 hln 100 REFDES=NE_3A
+part 6 7432 540 310 h
+a 0 x 0:13 0 0 0 hln 100 PKGREF=ILI_7
+a 0 xp 9 0 40 0 hln 100 REFDES=ILI_7A
+a 0 sp 11 0 40 50 hln 100 PART=7432
+a 0 s 0:13 0 0 0 hln 100 PKGTYPE=DIP14
+a 0 s 0:13 0 0 0 hln 100 GATE=A
+part 8 7400 220 400 h
+a 0 sp 11 0 40 50 hln 100 PART=7400
+a 0 s 0:13 0 0 0 hln 100 PKGTYPE=DIP14
+a 0 s 0:13 0 0 0 hln 100 GATE=A
+a 0 x 0:13 0 0 0 hln 100 PKGREF=NI_4
+a 0 xp 9 0 40 0 hln 100 REFDES=NI_4A
+part 1 titleblk 970 720 h
+a 1 s 13 0 350 10 hcn 100 PAGESIZE=A
+a 1 s 13 0 180 60 hcn 100 PAGETITLE=
+a 1 s 13 0 340 95 hrn 100 PAGECOUNT=1
+a 1 s 13 0 300 95 hrn 100 PAGENO=1
+part 212 nodeMarker 660 320 h
+a 0 s 0 0 0 0 hln 100 PROBEVAR=SONDA_8
+a 0 s 0 0 0 0 hln 100 PROBEVAR=
+a 0 a 0 0 4 22 hlb 100 LABEL=1
+@conn
+w 227
+s 380 260 350 260 226
+s 350 260 350 270 228
+s 200 340 220 340 90
+s 200 310 200 340 88
+s 310 310 200 310 86
+s 310 270 310 310 83
+s 310 270 290 270 85
+s 350 270 310 270 230
+w 239
+s 380 400 350 400 238
+s 350 400 350 410 240
+s 350 410 290 410 242
+w 12
+s 310 230 200 230 77
+s 310 190 310 230 74
+s 200 230 200 260 79
+s 310 190 290 190 76
+s 200 260 220 260 81
+s 310 240 310 230 298
+s 310 240 380 240 220
+w 215
+s 200 400 220 400 99
+s 200 370 200 400 97
+s 310 340 310 370 92
+s 310 380 380 380 232
+s 270 340 310 340 23
+s 310 370 310 380 306
+s 310 370 200 370 95
+w 251
+s 510 250 510 160 271
+s 450 250 510 250 250
+s 510 160 180 160 115
+s 180 160 180 200 117
+s 220 200 180 200 121
+s 180 200 180 280 123
+s 180 280 220 280 119
+s 510 310 540 310 254
+s 510 250 510 310 252
+w 134
+s 200 180 220 180 141
+s 200 140 200 180 139
+s 620 140 200 140 137
+s 610 320 620 320 133
+s 620 320 620 140 310
+s 620 320 660 320 324
+s 660 320 680 320 325
+w 327
+s 510 390 510 460 60
+s 450 390 510 390 244
+s 510 390 510 330 246
+s 510 330 540 330 261
+s 510 460 200 460 127
+s 200 420 220 420 209
+s 200 460 200 420 129
+@junction
+j 220 180
++ p 9 A
++ w 134
+j 180 200
++ w 251
++ w 251
+j 380 240
++ p 218 A
++ w 12
+j 380 260
++ p 218 B
++ w 227
+j 220 340
++ p 2 A
++ w 227
+j 290 270
++ p 5 Y
++ w 227
+j 310 270
++ w 227
++ w 227
+j 380 400
++ p 219 B
++ w 239
+j 290 410
++ p 8 Y
++ w 239
+j 220 200
++ p 9 B
++ w 251
+j 220 280
++ p 5 B
++ w 251
+j 450 250
++ p 218 Y
++ w 251
+j 450 390
++ p 219 Y
++ w 327
+j 220 400
++ p 8 A
++ w 215
+j 310 230
++ w 12
++ w 12
+j 220 260
++ p 5 A
++ w 12
+j 290 190
++ p 9 Y
++ w 12
+j 380 380
++ p 219 A
++ w 215
+j 270 340
++ p 2 Y
++ w 215
+j 310 370
++ w 215
++ w 215
+j 540 310
++ p 6 A
++ w 251
+j 510 250
++ w 251
++ w 251
+j 510 390
++ w 327
++ w 327
+j 540 330
++ p 6 B
++ w 327
+j 610 320
++ p 6 Y
++ w 134
+j 620 320
++ w 134
++ w 134
+j 660 320
++ p 212 pin1
++ w 134
+j 680 320
++ s 143
++ w 134
+j 220 420
++ p 8 B
++ w 327
+@attributes
+a 0 s 0:13 0 0 0 hln 100 PAGETITLE=
+a 0 s 0:13 0 0 0 hln 100 PAGENO=1
+a 0 s 0:13 0 0 0 hln 100 PAGESIZE=A
+a 0 s 0:13 0 0 0 hln 100 PAGECOUNT=1
+@graphics
+t 203 t 5 140 95 196 111 0 13
+Test primer 7

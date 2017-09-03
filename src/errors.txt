@@ -1,0 +1,6 @@
+1 Neuspelo otvaranje Ulaznog fajla
+2 Pogresan broj argumenata glavnog programa. Morate uneti tacno 3 argumenta
+3 Neuspelo kreiranje/otvaranje izlaznog fajla sa rezultatima(log fajl)
+4 Greska u formatu ulaznog fajla
+5 Neuspelo kreiranje/otvaranje izlaznog fajla sa statistikom(log fajl)
+6 Neuspela alokacija dinamicke memorije
