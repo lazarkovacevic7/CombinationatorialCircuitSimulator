@@ -14,6 +14,7 @@ if [ $1 = "-run" ]; then
 	mkdir -vp test_results/test8
 	mkdir -vp test_results/test9
 
+	# run all tests
 	echo Runing test 0
 	./Main.run tests/test0/test0.txt test_results/test0/	
 
@@ -43,6 +44,9 @@ if [ $1 = "-run" ]; then
 
 	echo Runing test 9
 	./Main.run tests/test9/test9.txt test_results/test9/
+
+	# compare results
+	./compare_results.sh
 
 elif [ $1 = "-clean" ]; then
 	rm -rfv test_results
