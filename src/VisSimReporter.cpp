@@ -66,30 +66,57 @@ void VisSimReporter::writeChanges(ostream& output, DigitalProbe* dp)
 //	   << "->"
 //	   << dp->getChanges()[i].nextValue
 
+    stringstream time;
+    stringstream direction;
+
+    // get length of time string for tab count formating output
+    int curr_time_size=0;
+
 	for(unsigned int i = 0; i<dp->getChanges().size();i++)
 	{
-		output		<<"Promena br."
-					<<i+1
-					<<endl
-					<<"____________"
-					<<endl
-					<<dp->getChanges()[i].prevValue
-					<<"->"
-					<<dp->getChanges()[i].nextValue
-					<<endl
 
-					<<fixed
-					<<setprecision(3)
-					<<dp->getChanges()[i].timeOfChange
-					<<"us"
-					<<endl
-					<<"____________"
+		direction	   << dp->getChanges()[i].prevValue
+					   << "->"
+					   << dp->getChanges()[i].nextValue;
 
-					<<endl
-					<<endl
-					<<endl
-					<<endl;
-		}
+        stringstream time_hlp;
 
+        time_hlp       << fixed
+                       << setprecision(3)
+                       << dp->getChanges()[i].timeOfChange
+                       << "us";
+
+        curr_time_size = time_hlp.str().size();
+
+	    time		   << time_hlp.str();
+
+        if ((i+1)%4 == 0 || i==dp->getChanges().size()-1)
+        {
+            output  << direction.str()
+                    << endl
+                    << time.str();
+            if (i!=dp->getChanges().size()-1)
+
+            output  << endl
+                    << endl
+                    << endl;
+
+
+            time.str("");
+            time.clear();
+            direction.str("");
+            direction.clear();
+        }
+        else
+        {
+            direction << "\t\t";
+
+            if(curr_time_size < 8)
+                time << "\t\t";
+            else 
+                time << "\t";
+        }
+
+	}
 }
 
