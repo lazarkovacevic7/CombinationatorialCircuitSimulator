@@ -46,6 +46,7 @@ realclean: clean
 	@$(RM) -rf $(TARGETDIR)
 	@$(RM) -rf *.*~
 	@$(RM) -rf *~
+	@$(RM) -rf test_results
 
 #Pull in dependency info for *existing* .o files
 -include $(OBJECTS:.$(OBJEXT)=.$(DEPEXT))

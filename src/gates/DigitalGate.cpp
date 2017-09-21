@@ -23,10 +23,10 @@ void DigitalGate::acceptSignal()
 
 	if(first)
 	{
-		SignalValue oldOutPinVal = outPinValDemo;		//outPinValDemo je sledeca vrednost koju bi kolo trebalo da dobije ako signal ne bude glic				
-		readInputPins();		//citanje pinova
-		process();				//postavlja se 'outPinValDemo'
-		if(inputsShortened())		//ako su ulazi kratkospojeni postavlja se flag					
+		SignalValue oldOutPinVal = outPinValDemo;		// next value on output pin if no glitch occurs
+		readInputPins();		// read pins
+		process();				// set outPinValDemo
+		if(inputsShortened())		// if inputs shorted flag is active
 			first=false;
 	
 		if(oldOutPinVal==0 && outPinValDemo==1)
@@ -36,19 +36,18 @@ void DigitalGate::acceptSignal()
 			Event::create(this,Scheduler::Instance()->getCurTime() + delay1to0 + DELTA, ModelElement::getId(), FallingEdge);
 
 		else if(oldOutPinVal==-1 && outPinValDemo==1)
-			Event::create(this,Scheduler::Instance()->getCurTime(), ModelElement::getId(), RisingEdge);			//prva propagacija signala dogadja se bez kasnjenja
+			Event::create(this,Scheduler::Instance()->getCurTime(), ModelElement::getId(), RisingEdge);			// first signal propagation no delay
 
 		else if(oldOutPinVal==-1 && outPinValDemo==0)
-			Event::create(this,Scheduler::Instance()->getCurTime(), ModelElement::getId(), FallingEdge);		//prva propagacija signala dogadja se bez kasnjenja		
+			Event::create(this,Scheduler::Instance()->getCurTime(), ModelElement::getId(), FallingEdge);		// first signal propagation no delay
 
 	}
 
 	else
 		first=true;	
 }
-
-void DigitalGate::notify(Description descr)			//obavestava se kolo da je kasnjenje proslo i izlazi kola se postavljaju na odg. vrednosti
-													//ako je promena okarakterisana kao glic, do obavestenja nece doci (filtriranje gliceva u Scheduler-u)
+// scheduler informs that delay is over. Output pins are set to correct values
+void DigitalGate::notify(Description descr)
 {
 	if(descr==FallingEdge)
 		outPinVal=0;
@@ -56,7 +55,7 @@ void DigitalGate::notify(Description descr)			//obavestava se kolo da je kasnjen
 		outPinVal=1;
 
 	for(unsigned int i=0; i<numOfTargets; i++)
-		target[i]->acceptSignal();		//dalja propagacija signala
+		target[i]->acceptSignal();		// further signal propagation
 }
 
 DigitalGate::DigitalGate(Time d0to1, Time d1to0):
