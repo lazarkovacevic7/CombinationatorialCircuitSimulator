@@ -1,34 +1,68 @@
-#compiler
-CC=g++
+#Compiler and Linker
+CC          := g++
 
-#compiler options
-OPTS=-c -Wall
+#The Target Binary Program
+TARGET      := main
 
-#source files
-SOURCES=$(wildcard *.cc src/*.cpp )
-#$(info $$SOURCES is ${SOURCES})
+#The Directories, Source, Includes, Objects, Binary and Resources
+SRCDIR      := src
+INCDIR      :=
+BUILDDIR    := obj
+TARGETDIR   := bin
+RESDIR      := res
+SRCEXT      := cpp
+DEPEXT      := d
+OBJEXT      := o
 
-#object files
-OBJECTS=$(SOURCES:.cpp=.o)
-#$(info $$OBJECTS is ${OBJECTS})
+#Flags, Libraries and Includes
+CFLAGS      := -Wall -g -c
+LIB         :=
+INC         :=
+INCDEP      :=
 
-#sdl-config or any other library here. 
-#``- ensures that the command between them is executed, and the result is put into LIBS
-#LIBS=`sdl-config --cflags --libs`
-LIBS = 
+#---------------------------------------------------------------------------------
+#DO NOT EDIT BELOW THIS LINE
+#---------------------------------------------------------------------------------
+SOURCES     := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
+OBJECTS     := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.$(OBJEXT)))
 
-#executable filename
-EXECUTABLE=Main.run
+#Defauilt Make
+all: directories $(TARGET)
 
-#Special symbols used:
-#$^ - is all the dependencies (in this case =$(OBJECTS) )
-#$@ - is the result name (in this case =$(EXECUTABLE) )
-# LINK.o = $(CC) $(LDFLAGS) $(TARGET_ARCH)
+#Remake
+remake: realclean all
 
-all: $(EXECUTABLE)
+#Make the Directories
+directories:
+	@mkdir -p $(TARGETDIR)
+	@mkdir -p $(BUILDDIR)
 
-$(EXECUTABLE): $(OBJECTS)
-	$(LINK.o) $^ -o $@ $(LIBS)
-
+#Clean only Objecst
 clean:
-	rm $(EXECUTABLE) $(OBJECTS)
+	@$(RM) -rf $(BUILDDIR)
+
+#Full Clean, Objects and Binaries
+realclean: clean
+	@$(RM) -rf $(TARGETDIR)
+	@$(RM) -rf *.*~
+	@$(RM) -rf *~
+
+#Pull in dependency info for *existing* .o files
+-include $(OBJECTS:.$(OBJEXT)=.$(DEPEXT))
+
+#Link
+$(TARGET): $(OBJECTS)
+	$(CC) -o $(TARGETDIR)/$(TARGET) $^ $(LIB)
+
+#Compile
+$(BUILDDIR)/%.$(OBJEXT): $(SRCDIR)/%.$(SRCEXT)
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $(INC) -c -o $@ $<
+	@$(CC) $(CFLAGS) $(INCDEP) -MM $(SRCDIR)/$*.$(SRCEXT) > $(BUILDDIR)/$*.$(DEPEXT)
+	@cp -f $(BUILDDIR)/$*.$(DEPEXT) $(BUILDDIR)/$*.$(DEPEXT).tmp
+	@sed -e 's|.*:|$(BUILDDIR)/$*.$(OBJEXT):|' < $(BUILDDIR)/$*.$(DEPEXT).tmp > $(BUILDDIR)/$*.$(DEPEXT)
+	@sed -e 's/.*://' -e 's/\\$$//' < $(BUILDDIR)/$*.$(DEPEXT).tmp | fmt -1 | sed -e 's/^ *//' -e 's/$$/:/' >> $(BUILDDIR)/$*.$(DEPEXT)
+	@rm -f $(BUILDDIR)/$*.$(DEPEXT).tmp
+
+#Non-File Targets
+.PHONY: all remake clean realclean resources
