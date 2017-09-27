@@ -1,0 +1,62 @@
+** Digital combinatorial circuit simulator
+- circuit desciription is defined in specific file format (see below)
+- possible signal values are {0, 1}
+- simulation time can be defined
+- filtering of glitch signals is alwayas active
+
+* digital combinatorial gates
+- types {AND, OR, NOT, NOR, NAND}
+- every gate can have 2 input and one output pin. Bidirectionl pins are not supported
+- every gate can have programmable propagation delay which is equal for gates of same types
+
+* digital signal sources
+- types {arbitrary source, impuls source, clock signal source}
+- first is not periodic, other 2 are periodic
+- initial value for all source types is 0 but can be reprogrammed
+
+* probes
+- measuring punkts
+- write signal changes to file or store them
+
+======================  input file format (EBNF notation)  ======================
+InputFile = SimulationTime NumberOfElements ElementList Connections Sources.
+SimulationTime = ( TimeInUs |  SimbolForSimulationRunTillNoMoreChangesInCircuit ) Newline.
+NumberOfElements = PositiveInteger Newline.
+ElementList = { ElementDescription Newline } 1 .
+ElementDescription = ID ElementType.
+ID = PositiveInteger.
+Connections = { ConnectionDescription Newline } 1 .
+ConnectionDescription = ID OutputPin ID InputPin.
+OutputPin = PositiveInteger.
+InputPin = PositiveInteger.
+Sources = { SourceID SourceDescription Newline }.
+SourceDescription = ( ImpulsSourceDescription | ArbitrarySourceDescription | ClockSourceDescription ).
+SourceID = ID.
+ImpulsSourceDescription = "1" ImpulsValue FrequencyInHerz ImpulsDuration.
+ArbitrarySourceDescription = "2" SignalChangesOfArbitraryDigitalSource "-1".
+ClockSourceDescription = "3" FrequencyInHerz.
+SignalChangesOfArbitraryDigitalSource = InitalValueOfArbitraryDigitalSource TimeOfChangeArbitraryDigitalSource.
+InitalValueOfArbitraryDigitalSource = BinaryValue.
+ImpulsValue = BinaryValue.
+ImpulsDuration = TimeInUs.
+TimeOfChangeArbitraryDigitalSource = { TimeInUs }.
+TimeInUs =  NonNegativeInteger.
+SimbolForSimulationRunTillNoMoreChangesInCircuit = "0".
+FrequencyInHerz = PositiveInteger.
+ElementType = ( AND | OR | NOT | NAND | NOR | Source | Probe ).
+AND = "1"  NumberOfInputPins.
+OR = "2".
+NOT = "3".
+NAND = "4"  NumberOfInputPins.
+NOR = "0"  NumberOfInputPins.
+NumberOfInputPins = ( "2" | "3" ).
+Source = "5".
+Probe = "6".
+NonNegativeInteger = Zero | PositiveInteger.
+PositiveInteger = digit { digit | zero }.
+digit = ("1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ).
+BinaryValue = ( "0" | "1" ).
+zero = "0".
+Newline = "\n".
+=================================================================================
+
