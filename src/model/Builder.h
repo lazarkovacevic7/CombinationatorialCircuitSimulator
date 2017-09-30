@@ -9,7 +9,6 @@
 //
 //
 
-
 #if !defined(_BUILDER_H)
 #define _BUILDER_H
 
@@ -23,7 +22,7 @@ public:
 
 	~Builder();
 
-	void buildModel(Data* data);	
+	void buildModel(Data* data);
 
 	static Builder* Instance();		// singleton
 
@@ -31,8 +30,8 @@ protected:
 
 	Builder();
 
-	void link(ID, unsigned int, ID, unsigned int );		// links model elements based on IDs. TODO: search for improvement
+	void link(ID, unsigned int, ID, unsigned int);// links model elements based on IDs. TODO: search for improvement
 
 };
 
-#endif  //_BUILDER_H
+#endif  //_BUILDER_H

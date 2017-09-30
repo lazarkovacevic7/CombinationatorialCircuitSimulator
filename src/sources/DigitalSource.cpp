@@ -9,7 +9,6 @@
 //
 //
 
-
 #include "DigitalSource.h"
 
 DigitalSource::~DigitalSource()
@@ -20,16 +19,13 @@ DigitalSource::~DigitalSource()
 void DigitalSource::process()
 {
 	changeOutPinVal();
-	for(unsigned int i=0; i<getNumOfTargets();i++)
+	for (unsigned int i = 0; i < getNumOfTargets(); i++)
 		target[i]->acceptSignal();
 }
 
-DigitalSource::DigitalSource():
-	ModelElement(),
- 	numberOfTargets(0),
- 	outPinVal(0),
- 	delay0to1(0),
- 	delay1to0(0)
+DigitalSource::DigitalSource() :
+		ModelElement(), numberOfTargets(0), outPinVal(0), delay0to1(0), delay1to0(
+				0)
 {
 
 }
@@ -57,7 +53,7 @@ unsigned int DigitalSource::getNumOfTargets()
 
 void DigitalSource::setTarget(ModelElement* t)
 {
-	target[numberOfTargets]=t;
+	target[numberOfTargets] = t;
 	numberOfTargets++;
 }
 
@@ -68,10 +64,10 @@ void DigitalSource::setSource(ModelElement* t)
 
 void DigitalSource::changeOutPinVal()
 {
-	if(outPinVal==1)
-		outPinVal=0;
+	if (outPinVal == 1)
+		outPinVal = 0;
 	else
-		outPinVal=1;
+		outPinVal = 1;
 }
 
 SignalValue DigitalSource::getOutPinVal()

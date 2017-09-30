@@ -9,19 +9,18 @@
 //
 //
 
-
 #include "OR.h"
 
 void OR::process()
 {
-	if(getInPinVal(0)==1 || getInPinVal(1)==1)
+	if (getInPinVal(0) == 1 || getInPinVal(1) == 1)
 		setOutPinValDemo(1);
 	else
 		setOutPinValDemo(0);
 }
 
-OR::OR()
-:	DigitalGate(0.010, 0.014)
+OR::OR() :
+		DigitalGate(0.010, 0.014)
 {
 
 }

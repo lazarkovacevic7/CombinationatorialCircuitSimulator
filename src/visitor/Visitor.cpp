@@ -9,15 +9,13 @@
 //
 //
 
-
 #include "../model/Model.h"
 #include "Visitor.h"
 
-
-void Visitor::visitModel (Model* m)
-{  
-	for (unsigned int i=0; i < m->getElements().size(); i++)
-		m->getElements()[i]->acceptVisitor(this);  
+void Visitor::visitModel(Model* m)
+{
+	for (unsigned int i = 0; i < m->getElements().size(); i++)
+		m->getElements()[i]->acceptVisitor(this);
 
 }
 void Visitor::visitDigitalProbe(DigitalProbe* dp)

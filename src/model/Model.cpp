@@ -9,7 +9,6 @@
 //
 //
 
-
 #include "Model.h"
 
 Model::Model()
@@ -19,7 +18,7 @@ Model::Model()
 
 void Model::acceptVisitor(Visitor* v)
 {
-	if(v)
+	if (v)
 		v->visitModel(this);
 }
 
@@ -28,14 +27,14 @@ void Model::add(ModelElement* me)
 	elements.push_back(me);
 }
 
-vector <ModelElement*> Model::getElements()
+vector<ModelElement*> Model::getElements()
 {
 	return elements;
 }
 
 Model::~Model()
 {
-	clearModel();	
+	clearModel();
 }
 
 Model* Model::Instance()
@@ -46,14 +45,14 @@ Model* Model::Instance()
 
 void Model::clearModel()
 {
-	for(unsigned int i=0; i<elements.size();i++)
-		delete elements[i];	
+	for (unsigned int i = 0; i < elements.size(); i++)
+		delete elements[i];
 }
 
 ModelElement* Model::findElement(ID id)
 {
-	for(unsigned int i=0; i<elements.size(); i++)
-		if(elements[i]->getId()==id)
+	for (unsigned int i = 0; i < elements.size(); i++)
+		if (elements[i]->getId() == id)
 			return elements[i];
 	return 0;
 }

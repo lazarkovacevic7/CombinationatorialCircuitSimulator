@@ -9,7 +9,6 @@
 //
 //
 
-
 #if !defined(_ASOURCE_H)
 #define _ASOURCE_H
 #define ASOURCE_MAXNUMOFCHANGES 50
@@ -20,7 +19,7 @@
 #include "../model/Reader.h"
 
 // dummy class for source with manual configuration
-class ASource : public Source
+class ASource: public Source
 {
 public:
 
@@ -28,14 +27,14 @@ public:
 	~ASource();
 
 	// initial signal value
-	void setInitialVal(SignalValue iVal);		
+	void setInitialVal(SignalValue iVal);
 	SignalValue getInitialVal();
 
 	// time of signal change
-	void setMomOfChange(Time moment);		
+	void setMomOfChange(Time moment);
 	Time* getMomsOfChange();
 
-	unsigned int getNumOfChanges();	
+	unsigned int getNumOfChanges();
 
 	void createConcreteElement();		// redefinition
 
@@ -43,9 +42,9 @@ private:
 
 	SignalValue initialValue;		// initial value of source signal
 
-	Time momentsOfChange[ASOURCE_MAXNUMOFCHANGES];		// moments of signal change
+	Time momentsOfChange[ASOURCE_MAXNUMOFCHANGES];	// moments of signal change
 	unsigned int numberOfChanges;			// number of changes
 
 };
 
-#endif  //_ASOURCE_H
+#endif  //_ASOURCE_H

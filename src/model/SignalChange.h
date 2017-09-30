@@ -9,7 +9,6 @@
 //
 //
 
-
 #if !defined(_SIGNALCHANGE_H)
 #define _SIGNALCHANGE_H
 #include "typedefs.h"
@@ -18,23 +17,18 @@
 class SignalChange
 {
 public:
-		
-	SignalChange(SignalValue prev, SignalValue next, Time t):
-		prevValue(prev),
-		nextValue(next),
-		timeOfChange(t)
-		{
 
-		}
+	SignalChange(SignalValue prev, SignalValue next, Time t) :
+			prevValue(prev), nextValue(next), timeOfChange(t)
+	{
 
-	SignalValue prevValue;		
-	SignalValue nextValue;	
+	}
+
+	SignalValue prevValue;
+	SignalValue nextValue;
 
 	Time timeOfChange;
 
 };
 
-
-
-
-#endif  //_SIGNALCHANGE_H
+#endif  //_SIGNALCHANGE_H

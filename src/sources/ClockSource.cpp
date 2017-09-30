@@ -9,11 +9,10 @@
 //
 //
 
-
 #include "ClockSource.h"
 
-ClockSource::ClockSource(Frequency f)
-:	DigitalSource(), frequency(f)
+ClockSource::ClockSource(Frequency f) :
+		DigitalSource(), frequency(f)
 {
 	turnOn();
 }
@@ -34,19 +33,20 @@ ClockSource::~ClockSource()
 }
 
 void ClockSource::notify(Description descr)
-{	
+{
 	process();
-	Time t = 1.0/(2*frequency)*1000000 + Scheduler::Instance()->getCurTime();
-	
-	if(descr==FallingEdge)
+	Time t = 1.0 / (2 * frequency) * 1000000
+			+ Scheduler::Instance()->getCurTime();
+
+	if (descr == FallingEdge)
 		Event::create(this, t, ModelElement::getId(), RisingEdge);
 	else
 		Event::create(this, t, ModelElement::getId(), FallingEdge);
 }
 
-void ClockSource::turnOn()					
+void ClockSource::turnOn()
 {
 	changeOutPinVal();
-	Time t=0;	
-	Event::create(this, t, ModelElement::getId(), FallingEdge);	
+	Time t = 0;
+	Event::create(this, t, ModelElement::getId(), FallingEdge);
 }

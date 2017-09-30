@@ -9,23 +9,22 @@
 //
 //
 
-
 #if !defined(_SOURCE_H)
 #define _SOURCE_H
 
 #include "Element.h"
 
 // dummy source
-class Source : public Element
+class Source: public Element
 {
 public:
 
 	Source();
 	Source(ID, Type);
 	~Source();
-	
+
 	virtual void createConcreteElement();		// redefinition
 
 };
 
-#endif  //_SOURCE_H
+#endif  //_SOURCE_H

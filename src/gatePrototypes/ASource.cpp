@@ -9,18 +9,17 @@
 //
 //
 
-
 #include "ASource.h"
 
-ASource::ASource()
-:	Source(), initialValue(0), numberOfChanges(0)
+ASource::ASource() :
+		Source(), initialValue(0), numberOfChanges(0)
 {
 
 }
 
 void ASource::setInitialVal(SignalValue iVal)
 {
-	initialValue=iVal;
+	initialValue = iVal;
 }
 
 SignalValue ASource::getInitialVal()
@@ -30,7 +29,7 @@ SignalValue ASource::getInitialVal()
 
 void ASource::setMomOfChange(Time moment)
 {
-	momentsOfChange[numberOfChanges]=moment;
+	momentsOfChange[numberOfChanges] = moment;
 	numberOfChanges++;
 }
 
@@ -46,12 +45,13 @@ unsigned int ASource::getNumOfChanges()
 
 ASource::~ASource()
 {
-	
+
 }
 
 void ASource::createConcreteElement()
 {
-	ArbitrarySource* s = new ArbitrarySource(initialValue, momentsOfChange, numberOfChanges);
+	ArbitrarySource* s = new ArbitrarySource(initialValue, momentsOfChange,
+			numberOfChanges);
 
 	s->setId(Element::getId());
 	Model::Instance()->add(s);
@@ -59,5 +59,4 @@ void ASource::createConcreteElement()
 	Time firstEvent = momentsOfChange[0];
 	Reader::Instance()->getData()->setTOFE(firstEvent);
 }
-
 

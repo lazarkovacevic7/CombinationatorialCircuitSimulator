@@ -9,19 +9,18 @@
 //
 //
 
-
 #include "NAND.h"
 
 void NAND::process()
 {
-	if(getInPinVal(0)==0 || getInPinVal(1)==0)
+	if (getInPinVal(0) == 0 || getInPinVal(1) == 0)
 		setOutPinValDemo(1);
 	else
 		setOutPinValDemo(0);
 }
 
-NAND::NAND()
-:	DigitalGate(0.011, 0.007)
+NAND::NAND() :
+		DigitalGate(0.011, 0.007)
 {
 
 }

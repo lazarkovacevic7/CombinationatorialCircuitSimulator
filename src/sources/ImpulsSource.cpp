@@ -9,11 +9,11 @@
 //
 //
 
-
 #include "ImpulsSource.h"
 
-ImpulsSource::ImpulsSource(ID i, Frequency f, SignalValue val, Time t)
-:	DigitalSource(), impulsLevel(val), frequency(f), impulsActiveTime(t), flag(true)
+ImpulsSource::ImpulsSource(ID i, Frequency f, SignalValue val, Time t) :
+		DigitalSource(), impulsLevel(val), frequency(f), impulsActiveTime(t), flag(
+				true)
 {
 
 	turnOn();
@@ -48,33 +48,34 @@ void ImpulsSource::notify(Description descr) // TODO: wtf?
 {
 	process();
 
-	if(flag)
+	if (flag)
 	{
 		Time t = impulsActiveTime + Scheduler::Instance()->getCurTime();
-		if(impulsLevel==0)
+		if (impulsLevel == 0)
 			Event::create(this, t, ModelElement::getId(), RisingEdge);
 		else
 			Event::create(this, t, ModelElement::getId(), FallingEdge);
-		flag=false;
+		flag = false;
 	}
 	else
 	{
-		Time t = (1.0/frequency)*1000000 - impulsActiveTime + Scheduler::Instance()->getCurTime();
-		if(impulsLevel==0)
+		Time t = (1.0 / frequency) * 1000000 - impulsActiveTime
+				+ Scheduler::Instance()->getCurTime();
+		if (impulsLevel == 0)
 			Event::create(this, t, ModelElement::getId(), FallingEdge);
 		else
 			Event::create(this, t, ModelElement::getId(), RisingEdge);
-		flag=true;
+		flag = true;
 	}
 }
 
 void ImpulsSource::turnOn()
 {
 
-	Time t=0;
-	if(impulsLevel==1)
+	Time t = 0;
+	if (impulsLevel == 1)
 		Event::create(this, t, ModelElement::getId(), RisingEdge);
-	
+
 	else
 	{
 		changeOutPinVal();

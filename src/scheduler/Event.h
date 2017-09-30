@@ -9,7 +9,6 @@
 //
 //
 
-
 #if !defined(_EVENT_H)
 #define _EVENT_H
 #include "../model/typedefs.h"
@@ -21,10 +20,10 @@ class Event
 {
 public:
 
-	static void create(ModelElement*, Time, ID, Description);		
+	static void create(ModelElement*, Time, ID, Description);
 	//dogadjaj se stvara na osnovu elementa koji ga je proizveo, vremena kada se pojavio	
 	//ID-ja elementa koji ga je izazvao i deskripcije(opisa dogadjaja)
-	
+
 	ModelElement* getTarget();
 	Time getTime();
 	void setTime(Time);
@@ -33,7 +32,6 @@ public:
 	Description getDescription();
 	Event* getNext();
 	void setNext(Event*);
-
 
 private:
 
@@ -44,7 +42,7 @@ private:
 	ID id;
 	Description descr;
 
-	Event* next;		//sledeci u nizu dogadjaja. Lista dogadjaja se formira u Scheduler-u
+	Event* next;//sledeci u nizu dogadjaja. Lista dogadjaja se formira u Scheduler-u
 };
 
-#endif  //_EVENT_H
+#endif  //_EVENT_H

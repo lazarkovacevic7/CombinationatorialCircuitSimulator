@@ -11,14 +11,14 @@
 
 #include "Gate.h"
 
-Gate::Gate()
-:	Element()
+Gate::Gate() :
+		Element()
 {
 
 }
 
-Gate::Gate(ID i, Type t)
-:	Element(t, i)
+Gate::Gate(ID i, Type t) :
+		Element(t, i)
 {
 
 }
@@ -32,31 +32,31 @@ Gate::~Gate()
 
 void Gate::createConcreteElement()
 {
-	if(Element::getType()==TypeAndGate)
+	if (Element::getType() == TypeAndGate)
 	{
 		AND* a = new AND();
 		a->setId(Element::getId());
 		Model::Instance()->add(a);
 	}
-	if(Element::getType()==TypeNandGate)
+	if (Element::getType() == TypeNandGate)
 	{
 		NAND* a = new NAND();
 		a->setId(Element::getId());
 		Model::Instance()->add(a);
 	}
-	if(Element::getType()==TypeNotGate)
+	if (Element::getType() == TypeNotGate)
 	{
 		NOT* a = new NOT();
 		a->setId(Element::getId());
 		Model::Instance()->add(a);
 	}
-	if(Element::getType()==TypeOrGate)
+	if (Element::getType() == TypeOrGate)
 	{
 		OR* a = new OR();
 		a->setId(Element::getId());
 		Model::Instance()->add(a);
 	}
-	if(Element::getType()==TypeNorGate)
+	if (Element::getType() == TypeNorGate)
 	{
 		NOR* a = new NOR();
 		a->setId(Element::getId());

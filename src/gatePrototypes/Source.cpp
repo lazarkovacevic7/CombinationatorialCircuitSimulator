@@ -9,26 +9,23 @@
 //
 //
 
-
 #include "Source.h"
 
-Source::Source()
-:	Element()
+Source::Source() :
+		Element()
 {
-
 
 }
 
-Source::Source(ID i,Type t)
-:	Element(t,i)
+Source::Source(ID i, Type t) :
+		Element(t, i)
 {
-
 
 }
 
 Source::~Source()
 {
-	
+
 }
 
 void Source::createConcreteElement()

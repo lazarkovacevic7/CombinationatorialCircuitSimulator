@@ -9,7 +9,6 @@
 //
 //
 
-
 #if !defined(_CLKSOURCE_H)
 #define _CLKSOURCE_H
 
@@ -19,7 +18,7 @@
 #include "../model/Reader.h"
 
 // dummy clock source
-class CLKSource : public Source
+class CLKSource: public Source
 {
 public:
 
@@ -30,10 +29,10 @@ public:
 	Frequency getFrequency();
 
 	void createConcreteElement();		// redefinition
-	
+
 private:
 
-	Frequency frequency ;
+	Frequency frequency;
 };
 
-#endif  //_CLKSOURCE_H
+#endif  //_CLKSOURCE_H

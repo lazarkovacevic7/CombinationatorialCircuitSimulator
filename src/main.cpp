@@ -7,18 +7,20 @@
 #include "visitor/VisSimReporter.h"
 #include "visitor/visStatistics.h"
 
-using namespace std;	
+using namespace std;
 
-
-int main(int argc, char* argv[]) {
+int main(int argc, char* argv[])
+{
 
 	// read input file and create model
 	Reader::Instance()->readData(argv[1], argv[2]);
 	Builder::Instance()->buildModel(Reader::Instance()->getData());
-	
+
 	// simulate
 	Time simTime = Reader::Instance()->getData()->getSimTime();
-	while(Scheduler::Instance()->processNow() && Scheduler::Instance()->getCurTime() < simTime);
+	while (Scheduler::Instance()->processNow()
+			&& Scheduler::Instance()->getCurTime() < simTime)
+		;
 
 	// report simulation results
 	VisSimReporter* v1 = new VisSimReporter();
@@ -30,7 +32,6 @@ int main(int argc, char* argv[]) {
 	Model::Instance()->acceptVisitor(v2);
 	v2->writeStats();
 	delete v2;
-
 
 	return 0;
 

@@ -9,7 +9,6 @@
 //
 //
 
-
 #include "ISource.h"
 
 ISource::~ISource()
@@ -19,26 +18,24 @@ ISource::~ISource()
 
 void ISource::createConcreteElement()
 {
-	ImpulsSource* s = new ImpulsSource(Element::getId(), frequency, impulsLevel, impulsActiveTime);
+	ImpulsSource* s = new ImpulsSource(Element::getId(), frequency, impulsLevel,
+			impulsActiveTime);
 
 	s->setId(Element::getId());
 	Model::Instance()->add(s);
 
-	Time firstEvent=impulsActiveTime;
+	Time firstEvent = impulsActiveTime;
 	Reader::Instance()->getData()->setTOFE(firstEvent);
 }
 
-ISource::ISource():
-		Source(),
-		frequency(1000),
-		impulsLevel(0),
-		impulsActiveTime(0)
-		{
+ISource::ISource() :
+		Source(), frequency(1000), impulsLevel(0), impulsActiveTime(0)
+{
 
-		}
+}
 void ISource::setImpulsLevel(SignalValue lev)
 {
-	impulsLevel=lev;
+	impulsLevel = lev;
 }
 
 SignalValue ISource::getImpulsLevel()
@@ -48,7 +45,7 @@ SignalValue ISource::getImpulsLevel()
 
 void ISource::setFrequency(Frequency f)
 {
-	frequency=f;
+	frequency = f;
 }
 
 Frequency ISource::getFrequency()
@@ -58,7 +55,7 @@ Frequency ISource::getFrequency()
 
 void ISource::setImpulsTime(Time iTime)
 {
-	impulsActiveTime=iTime;
+	impulsActiveTime = iTime;
 }
 
 Time ISource::getImpulsTime()

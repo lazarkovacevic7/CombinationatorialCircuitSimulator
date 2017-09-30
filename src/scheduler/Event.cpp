@@ -9,16 +9,10 @@
 //
 //
 
-
 #include "Event.h"
 
-
-Event::Event(ModelElement* e, Time t, ID i, Description d)
-:	target(e),
-	time(t),
- 	id(i),
- 	descr(d),
- 	next(0)
+Event::Event(ModelElement* e, Time t, ID i, Description d) :
+		target(e), time(t), id(i), descr(d), next(0)
 {
 	Scheduler::Instance()->put(this);
 }
@@ -45,13 +39,12 @@ ID Event::getID()
 
 void Event::setID(ID i)
 {
-	id=i;
+	id = i;
 }
-
 
 void Event::setTime(Time t)
 {
-	time=t;
+	time = t;
 }
 
 Event* Event::getNext()
@@ -61,9 +54,8 @@ Event* Event::getNext()
 
 void Event::setNext(Event* n)
 {
-	next=n;
+	next = n;
 }
-
 
 Description Event::getDescription()
 {

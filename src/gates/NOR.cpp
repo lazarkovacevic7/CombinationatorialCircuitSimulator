@@ -9,19 +9,18 @@
 //
 //
 
-
 #include "NOR.h"
 
 void NOR::process()
 {
-	if(getInPinVal(0)==1 || getInPinVal(1)==1)
+	if (getInPinVal(0) == 1 || getInPinVal(1) == 1)
 		setOutPinValDemo(0);
 	else
 		setOutPinValDemo(1);
 }
 
-NOR::NOR()
-:	DigitalGate(0.012, 0.008)
+NOR::NOR() :
+		DigitalGate(0.012, 0.008)
 {
 
 }

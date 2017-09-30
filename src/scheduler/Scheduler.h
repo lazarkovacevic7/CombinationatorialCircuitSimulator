@@ -9,7 +9,6 @@
 //
 //
 
-
 #if !defined(_SCHEDULER_H)
 #define _SCHEDULER_H
 #include "../model/typedefs.h"
@@ -33,13 +32,13 @@ public:
 
 protected:
 
-	Scheduler();		
+	Scheduler();
 
 	//helper. Process one event
-	bool processOneEvent();				
+	bool processOneEvent();
 
 	// helper. Check if 2 neighbour events form a glitch. If so, remove them from chain of events. TODO: is this the right place?
-	bool checkGlitch(Event*, Event*);		
+	bool checkGlitch(Event*, Event*);
 
 private:
 
@@ -49,4 +48,4 @@ private:
 
 };
 
-#endif  //_SCHEDULER_H
+#endif  //_SCHEDULER_H

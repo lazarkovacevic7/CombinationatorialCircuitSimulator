@@ -9,27 +9,24 @@
 //
 //
 
-
 #if !defined(_OR_H)
 #define _OR_H
 
 #include "DigitalGate.h"
 
 //predstavlja ILI kolo
-class OR : public DigitalGate
+class OR: public DigitalGate
 {
 public:
 
 	OR();
-	
+
 	void acceptVisitor(Visitor*);		// visitor
-	
+
 protected:
 
 	void process();			// redefiniton
-	
-
 
 };
 
-#endif  //_OR_H
+#endif  //_OR_H

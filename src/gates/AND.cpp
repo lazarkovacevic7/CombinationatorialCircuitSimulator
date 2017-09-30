@@ -9,20 +9,18 @@
 //
 //
 
-
 #include "AND.h"
-
 
 void AND::process()
 {
-	if(getInPinVal(0)==0 || getInPinVal(1)==0)
+	if (getInPinVal(0) == 0 || getInPinVal(1) == 0)
 		setOutPinValDemo(0);
 	else
 		setOutPinValDemo(1);
 }
 
-AND::AND()
-:	DigitalGate(0.017, 0.012)		// delay 0->1 and delay 1->0 are set in constructor initializater
+AND::AND() :
+		DigitalGate(0.017, 0.012)// delay 0->1 and delay 1->0 are set in constructor initializater
 {
 
 }

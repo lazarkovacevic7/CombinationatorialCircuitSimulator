@@ -9,7 +9,6 @@
 //
 //
 
-
 #include "DigitalGate.h"
 
 DigitalGate::~DigitalGate()
@@ -21,69 +20,70 @@ void DigitalGate::acceptSignal()
 {
 	static bool first = true;
 
-	if(first)
+	if (first)
 	{
-		SignalValue oldOutPinVal = outPinValDemo;		// next value on output pin if no glitch occurs
+		SignalValue oldOutPinVal = outPinValDemo;// next value on output pin if no glitch occurs
 		readInputPins();		// read pins
 		process();				// set outPinValDemo
-		if(inputsShortened())		// if inputs shorted flag is active
-			first=false;
-	
-		if(oldOutPinVal==0 && outPinValDemo==1)
-			Event::create(this, Scheduler::Instance()->getCurTime() + delay0to1 + DELTA, ModelElement::getId(), RisingEdge); 
+		if (inputsShortened())		// if inputs shorted flag is active
+			first = false;
 
-		else if(oldOutPinVal==1 && outPinValDemo==0)
-			Event::create(this,Scheduler::Instance()->getCurTime() + delay1to0 + DELTA, ModelElement::getId(), FallingEdge);
+		if (oldOutPinVal == 0 && outPinValDemo == 1)
+			Event::create(this,
+					Scheduler::Instance()->getCurTime() + delay0to1 + DELTA,
+					ModelElement::getId(), RisingEdge);
 
-		else if(oldOutPinVal==-1 && outPinValDemo==1)
-			Event::create(this,Scheduler::Instance()->getCurTime(), ModelElement::getId(), RisingEdge);			// first signal propagation no delay
+		else if (oldOutPinVal == 1 && outPinValDemo == 0)
+			Event::create(this,
+					Scheduler::Instance()->getCurTime() + delay1to0 + DELTA,
+					ModelElement::getId(), FallingEdge);
 
-		else if(oldOutPinVal==-1 && outPinValDemo==0)
-			Event::create(this,Scheduler::Instance()->getCurTime(), ModelElement::getId(), FallingEdge);		// first signal propagation no delay
+		else if (oldOutPinVal == -1 && outPinValDemo == 1)
+			Event::create(this, Scheduler::Instance()->getCurTime(),
+					ModelElement::getId(), RisingEdge);	// first signal propagation no delay
+
+		else if (oldOutPinVal == -1 && outPinValDemo == 0)
+			Event::create(this, Scheduler::Instance()->getCurTime(),
+					ModelElement::getId(), FallingEdge);// first signal propagation no delay
 
 	}
 
 	else
-		first=true;	
+		first = true;
 }
 // scheduler informs that delay is over. Output pins are set to correct values
 void DigitalGate::notify(Description descr)
 {
-	if(descr==FallingEdge)
-		outPinVal=0;
+	if (descr == FallingEdge)
+		outPinVal = 0;
 	else
-		outPinVal=1;
+		outPinVal = 1;
 
-	for(unsigned int i=0; i<numOfTargets; i++)
+	for (unsigned int i = 0; i < numOfTargets; i++)
 		target[i]->acceptSignal();		// further signal propagation
 }
 
-DigitalGate::DigitalGate(Time d0to1, Time d1to0):
-	ModelElement(),
-	numOfTargets(0),
-	delay0to1(d0to1),
-	delay1to0(d1to0),
-	outPinValDemo(-1),
-	outPinVal(-1)
-
+DigitalGate::DigitalGate(Time d0to1, Time d1to0) :
+		ModelElement(), numOfTargets(0), delay0to1(d0to1), delay1to0(d1to0), outPinValDemo(
+				-1), outPinVal(-1)
 
 {
-	source[0]=0;
-	source[1]=0;
+	source[0] = 0;
+	source[1] = 0;
 }
 
 void DigitalGate::setTarget(ModelElement* t)
 {
-	target[numOfTargets]=t;
+	target[numOfTargets] = t;
 	numOfTargets++;
 }
 
 void DigitalGate::setSource(ModelElement* s)
 {
-	if(source[0]==0)
-		source[0]=s;
-	else if(source[1]==0)
-		source[1]=s;
+	if (source[0] == 0)
+		source[0] = s;
+	else if (source[1] == 0)
+		source[1] = s;
 }
 
 SignalValue DigitalGate::getOutPinVal()
@@ -98,7 +98,7 @@ SignalValue DigitalGate::getOutPinValDemo()
 
 void DigitalGate::setOutPinValDemo(SignalValue s)
 {
-	outPinValDemo=s;
+	outPinValDemo = s;
 }
 
 SignalValue DigitalGate::getInPinVal(unsigned int i)
@@ -108,13 +108,13 @@ SignalValue DigitalGate::getInPinVal(unsigned int i)
 
 void DigitalGate::setInPinVal(unsigned int i, SignalValue val)
 {
-	inPinVal[i]=val;
+	inPinVal[i] = val;
 }
 
 void DigitalGate::readInputPins()
 {
-	inPinVal[0]=source[0]->getOutPinVal();
-	inPinVal[1]=source[1]->getOutPinVal();
+	inPinVal[0] = source[0]->getOutPinVal();
+	inPinVal[1] = source[1]->getOutPinVal();
 }
 
 Time DigitalGate::getDelay1to0()
@@ -129,7 +129,7 @@ Time DigitalGate::getDelay0to1()
 
 bool DigitalGate::inputsShortened()
 {
-	if(source[0]==source[1])
+	if (source[0] == source[1])
 		return true;
 	else
 		return false;

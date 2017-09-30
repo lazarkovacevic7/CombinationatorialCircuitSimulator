@@ -9,7 +9,6 @@
 //
 //
 
-
 #if !defined(_IMPULSSOURCE_H)
 #define _IMPULSSOURCE_H
 
@@ -19,7 +18,7 @@
 #include "../model/Reader.h"
 
 // impuls source
-class ImpulsSource : public DigitalSource
+class ImpulsSource: public DigitalSource
 {
 public:
 
@@ -28,7 +27,6 @@ public:
 
 	void notify(Description);		// redefinition
 	void acceptVisitor(Visitor*);	// visitor
-
 
 	SignalValue getImpulsLeve();
 	Frequency getFrequency();
@@ -48,4 +46,4 @@ private:
 
 };
 
-#endif  //_IMPULSSOURCE_H
+#endif  //_IMPULSSOURCE_H

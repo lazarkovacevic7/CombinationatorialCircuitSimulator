@@ -9,7 +9,6 @@
 //
 //
 
-
 #include "Builder.h"
 
 Builder::~Builder()
@@ -22,7 +21,8 @@ Builder::Builder()
 
 }
 
-Builder* Builder::Instance() {
+Builder* Builder::Instance()
+{
 
 	static Builder instance;
 	return &instance;
@@ -31,11 +31,11 @@ Builder* Builder::Instance() {
 void Builder::buildModel(Data* data)
 {
 	// spawn elements
-	for(unsigned int i=0; i<data->getNumberOfElements();i++)		
+	for (unsigned int i = 0; i < data->getNumberOfElements(); i++)
 		data->getElements()[i]->createConcreteElement();
 
 	//link elements
-	for(unsigned int i=0; i<data->getConnDescr().size(); i++)		
+	for (unsigned int i = 0; i < data->getConnDescr().size(); i++)
 	{
 
 		ID id1 = data->getConnDescr()[i]->idX;
@@ -46,27 +46,24 @@ void Builder::buildModel(Data* data)
 		link(id1, pin1, id2, pin2);
 	}
 
-
 }
-
-
 
 void Builder::link(ID id1, unsigned int pin1, ID id2, unsigned int pin2)
 
 {
-	for(unsigned int i=0; i<Model::Instance()->getElements().size(); i++)
+	for (unsigned int i = 0; i < Model::Instance()->getElements().size(); i++)
 	{
 
-		if(Model::Instance()->getElements()[i]->getId()==id1)
-			
-			Model::Instance()->getElements()[i]->setTarget(Model::Instance()->findElement(id2));
-		
+		if (Model::Instance()->getElements()[i]->getId() == id1)
 
-		if(Model::Instance()->getElements()[i]->getId()==id2)
+			Model::Instance()->getElements()[i]->setTarget(
+					Model::Instance()->findElement(id2));
 
-		
-			Model::Instance()->getElements()[i]->setSource(Model::Instance()->findElement(id1));
-		
+		if (Model::Instance()->getElements()[i]->getId() == id2)
+
+			Model::Instance()->getElements()[i]->setSource(
+					Model::Instance()->findElement(id1));
+
 	}
 
 }

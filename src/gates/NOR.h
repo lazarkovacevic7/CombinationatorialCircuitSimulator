@@ -9,13 +9,12 @@
 //
 //
 
-
 #if !defined(_NOR_H)
 #define _NOR_H
 
 #include "DigitalGate.h"
 
-class NOR : public DigitalGate
+class NOR: public DigitalGate
 {
 public:
 
@@ -29,4 +28,4 @@ protected:
 
 };
 
-#endif  //_NOR_H
+#endif  //_NOR_H

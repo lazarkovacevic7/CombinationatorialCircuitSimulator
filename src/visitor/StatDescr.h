@@ -24,8 +24,9 @@ using namespace std;
 class StatDescr
 {
 public:
-		
-	StatDescr(string, string , string, ID, ID[], ID[], unsigned int, unsigned int);
+
+	StatDescr(string, string, string, ID, ID[], ID[], unsigned int,
+			unsigned int);
 
 	// strings and IDs to appear in statistics
 	string descrMain;
@@ -47,4 +48,4 @@ private:
 
 };
 
-#endif  //_STATDESCR_H
+#endif  //_STATDESCR_H

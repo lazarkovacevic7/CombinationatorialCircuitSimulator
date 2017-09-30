@@ -9,7 +9,6 @@
 //
 //
 
-
 #if !defined(_CLOCKSOURCE_H)
 #define _CLOCKSOURCE_H
 
@@ -18,7 +17,7 @@
 #include "../model/Model.h"
 
 // clock source
-class ClockSource : public DigitalSource
+class ClockSource: public DigitalSource
 {
 public:
 
@@ -29,14 +28,14 @@ public:
 	void acceptVisitor(Visitor*);		// visitor
 
 	Frequency getFrequency();
-	
+
 protected:
 
 	void turnOn();			// redefinition
-	
+
 private:
 
 	Frequency frequency;
 };
 
-#endif  //_CLOCKSOURCE_H
+#endif  //_CLOCKSOURCE_H

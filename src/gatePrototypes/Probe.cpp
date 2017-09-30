@@ -19,23 +19,22 @@ Probe::~Probe()
 
 }
 
-void Probe::createConcreteElement() 
+void Probe::createConcreteElement()
 {
 	DigitalProbe* p = new DigitalProbe();
 	p->setId(Element::getId());
-	Model::Instance()->add(p);	
+	Model::Instance()->add(p);
 }
 
-Probe::Probe()
-:	Element()
+Probe::Probe() :
+		Element()
 {
 
 }
 
-Probe::Probe(ID i, Type t)
-:	Element(t,i)
+Probe::Probe(ID i, Type t) :
+		Element(t, i)
 {
 
 }
-
 

@@ -9,7 +9,6 @@
 //
 //
 
-
 #if !defined(_READER_H)
 #define _READER_H
 
@@ -23,7 +22,6 @@
 #include <fstream>
 #include <string>
 
-
 using namespace std;
 
 // reads data from circuit description file and puts it into object of class Data
@@ -31,7 +29,7 @@ class Reader
 {
 public:
 
-	static Reader* Instance ();		// singleton
+	static Reader* Instance();		// singleton
 
 	~Reader();
 
@@ -44,12 +42,12 @@ protected:
 
 	void parseInputFile(char*);		// helper for file parsing
 
-	void sourceInitialize(unsigned int, string);		// helper, creates dummy elements? TODO: examine
-	
+	void sourceInitialize(unsigned int, string);// helper, creates dummy elements? TODO: examine
+
 private:
-			
+
 	Data* data;			// data object
 
 };
 
-#endif  //_READER_H
+#endif  //_READER_H

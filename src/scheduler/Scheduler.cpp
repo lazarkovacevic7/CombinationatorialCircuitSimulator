@@ -9,7 +9,6 @@
 //
 //
 
-
 #include "Scheduler.h"
 
 Scheduler* Scheduler::Instance()
@@ -20,43 +19,44 @@ Scheduler* Scheduler::Instance()
 
 void Scheduler::put(Event* e)
 {
-	if (e==0) return;
+	if (e == 0)
+		return;
 	Time time = e->getTime();
 	Event* nxt = first;
 	Event* prv = 0;
 	bool glitch = false;
-	
-	while (nxt!=0 && time >= nxt->getTime())    // go through list and place event where it should be
-	{			
+
+	while (nxt != 0 && time >= nxt->getTime()) // go through list and place event where it should be
+	{
 		prv = nxt;
 		nxt = nxt->getNext();
 
-		if(nxt!=0)
+		if (nxt != 0)
 		{
-			if(checkGlitch(e, nxt))
+			if (checkGlitch(e, nxt))
 			{
-				glitch=true;
+				glitch = true;
 				break;
 			}
 		}
-	}	
+	}
 
-	if(!glitch)
+	if (!glitch)
 	{
 		e->setNext(nxt);
-		if (prv!=0) 
-			prv->setNext(e); 
+		if (prv != 0)
+			prv->setNext(e);
 		else
-			first = e; 
+			first = e;
 	}
 
 	else
-		prv->setNext(nxt->getNext());			
+		prv->setNext(nxt->getNext());
 
 }
 
-Scheduler::Scheduler()
-:	curTime(0), first(0)
+Scheduler::Scheduler() :
+		curTime(0), first(0)
 {
 
 }
@@ -64,20 +64,23 @@ Scheduler::Scheduler()
 bool Scheduler::processOneEvent()
 {
 	Event* e = first;
-	if (e==0) return false;	
+	if (e == 0)
+		return false;
 	curTime = e->getTime();
 
 	ModelElement* el = e->getTarget();
-	if (el) el->notify(e->getDescription());
+	if (el)
+		el->notify(e->getDescription());
 	first = first->getNext();
 	delete e;
-	return (first && first->getTime()==0);
+	return (first && first->getTime() == 0);
 }
 
 bool Scheduler::processNow()
 {
-	while (processOneEvent());
-	return (first!=0);
+	while (processOneEvent())
+		;
+	return (first != 0);
 }
 
 bool Scheduler::checkGlitch(Event* e1, Event* e2)
@@ -85,35 +88,38 @@ bool Scheduler::checkGlitch(Event* e1, Event* e2)
 	Event* first;
 	Event* second;
 
-	Time t = e1->getTime()-e2->getTime();
-	if(t>0)
+	Time t = e1->getTime() - e2->getTime();
+	if (t > 0)
 	{
-		first=e2;
-		second=e1;
+		first = e2;
+		second = e1;
 	}
 
-	else if(t<=0)
+	else if (t <= 0)
 	{
-		first=e1;
-		second=e2;
+		first = e1;
+		second = e2;
 	}
 
-	t=fabs(t);
+	t = fabs(t);
 
-	if(first->getID()==second->getID())
+	if (first->getID() == second->getID())
 	{
-		if(first->getDescription()==RisingEdge && second->getDescription()==FallingEdge && t < fabs(first->getTarget()->getDelay1to0()))
+		if (first->getDescription() == RisingEdge
+				&& second->getDescription() == FallingEdge
+				&& t < fabs(first->getTarget()->getDelay1to0()))
 			return true;
-		else if(first->getDescription()==FallingEdge && second->getDescription()==RisingEdge && t < fabs(first->getTarget()->getDelay0to1()))
+		else if (first->getDescription() == FallingEdge
+				&& second->getDescription() == RisingEdge
+				&& t < fabs(first->getTarget()->getDelay0to1()))
 			return true;
-		else 
+		else
 			return false;
 	}
 	else
 		return false;
 
 }
-
 
 Time Scheduler::getCurTime()
 {

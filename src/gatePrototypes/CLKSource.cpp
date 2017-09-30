@@ -9,11 +9,10 @@
 //
 //
 
-
 #include "CLKSource.h"
 
-CLKSource::CLKSource()
-:	Source(), frequency(0)
+CLKSource::CLKSource() :
+		Source(), frequency(0)
 
 {
 
@@ -21,7 +20,7 @@ CLKSource::CLKSource()
 
 void CLKSource::setFrequency(Frequency f)
 {
-	frequency=f;
+	frequency = f;
 }
 
 Frequency CLKSource::getFrequency()
@@ -40,6 +39,6 @@ void CLKSource::createConcreteElement()
 	s->setId(Element::getId());
 	Model::Instance()->add(s);
 
-	Time firstEvent = 1.0/(2*frequency)*1000000;
+	Time firstEvent = 1.0 / (2 * frequency) * 1000000;
 	Reader::Instance()->getData()->setTOFE(firstEvent);
 }

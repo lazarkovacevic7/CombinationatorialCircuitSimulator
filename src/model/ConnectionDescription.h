@@ -9,7 +9,6 @@
 //
 //
 
-
 #if !defined(_CONNECTIONDESCRIPTION_H)
 #define _CONNECTIONDESCRIPTION_H
 
@@ -19,12 +18,9 @@
 class ConnectionDescription
 {
 public:
-	
-	ConnectionDescription(ID i1, unsigned int pin1, ID i2, unsigned int pin2):
-		idX(i1),
-		idY(i2),
-		pinX(pin1),
-		pinY(pin2)
+
+	ConnectionDescription(ID i1, unsigned int pin1, ID i2, unsigned int pin2) :
+			idX(i1), idY(i2), pinX(pin1), pinY(pin2)
 	{
 
 	}
@@ -32,9 +28,9 @@ public:
 	ID idX;
 	ID idY;
 
-	unsigned int pinX ;
+	unsigned int pinX;
 	unsigned int pinY;
 
 };
 
-#endif  //_CONNECTIONDESCRIPTION_H
+#endif  //_CONNECTIONDESCRIPTION_H

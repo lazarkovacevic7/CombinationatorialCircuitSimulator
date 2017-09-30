@@ -9,10 +9,8 @@
 //
 //
 
-
 #include "DigitalProbe.h"
 #include "../model/Reader.h"
-
 
 DigitalProbe::~DigitalProbe()
 {
@@ -21,19 +19,19 @@ DigitalProbe::~DigitalProbe()
 
 void DigitalProbe::acceptSignal()
 {
-	lastVal=curVal;
-	curVal=source->getOutPinVal();
-	process();	
+	lastVal = curVal;
+	curVal = source->getOutPinVal();
+	process();
 }
 
 void DigitalProbe::process()
 {
-	if(lastVal!=-1)
+	if (lastVal != -1)
 	{
-		Time t=Scheduler::Instance()->getCurTime();
-		Time tofe=Reader::Instance()->getData()->getTOFE();
+		Time t = Scheduler::Instance()->getCurTime();
+		Time tofe = Reader::Instance()->getData()->getTOFE();
 
-		if(t > tofe)
+		if (t > tofe)
 		{
 			SignalChange s(lastVal, curVal, t);
 			addChange(s);
@@ -41,13 +39,9 @@ void DigitalProbe::process()
 	}
 }
 
-DigitalProbe::DigitalProbe():
-		ModelElement(),
-	 	source(0),
-	 	lastVal(-1),
-	 	curVal(-1),
-	 	delay0to1(0),
-	 	delay1to0(0)
+DigitalProbe::DigitalProbe() :
+		ModelElement(), source(0), lastVal(-1), curVal(-1), delay0to1(0), delay1to0(
+				0)
 {
 
 }
@@ -84,7 +78,7 @@ void DigitalProbe::acceptVisitor(Visitor* v)
 
 void DigitalProbe::setSource(ModelElement* s)
 {
-	source=s;
+	source = s;
 }
 
 void DigitalProbe::setTarget(ModelElement* e)

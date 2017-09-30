@@ -9,7 +9,6 @@
 //
 //
 
-
 #if !defined(_VISSIMREPORTER_H)
 #define _VISSIMREPORTER_H
 
@@ -22,16 +21,16 @@
 #include <iomanip>
 
 // Visitor for simulation results report
-class VisSimReporter : public Visitor
+class VisSimReporter: public Visitor
 {
 public:
-	
+
 	void visitDigitalProbe(DigitalProbe*);		// redefinition	
 
 protected:
 
-	void writeChanges(ostream&, DigitalProbe*);			// write changes in specific format
+	void writeChanges(ostream&, DigitalProbe*);	// write changes in specific format
 
 };
 
-#endif  //_VISSIMREPORTER_H
+#endif  //_VISSIMREPORTER_H

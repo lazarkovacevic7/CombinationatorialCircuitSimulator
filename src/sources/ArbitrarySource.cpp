@@ -9,17 +9,14 @@
 //
 //
 
-
 #include "ArbitrarySource.h"
 
-ArbitrarySource::ArbitrarySource(SignalValue val, Time* moments, unsigned int num):
-	DigitalSource(),
-	initialValue(val),
-	numberOfChanges(num),
-	counter(0)
+ArbitrarySource::ArbitrarySource(SignalValue val, Time* moments,
+		unsigned int num) :
+		DigitalSource(), initialValue(val), numberOfChanges(num), counter(0)
 {
-	for(unsigned int j=0; j<numberOfChanges; j++)
-		momentsOfChange[j]=moments[j];
+	for (unsigned int j = 0; j < numberOfChanges; j++)
+		momentsOfChange[j] = moments[j];
 	turnOn();
 }
 
@@ -50,13 +47,15 @@ ArbitrarySource::~ArbitrarySource()
 
 void ArbitrarySource::notify(Description descr)
 {
-	process();	
-	if(counter<numberOfChanges)
+	process();
+	if (counter < numberOfChanges)
 	{
-		if(descr==FallingEdge)
-			Event::create(this, momentsOfChange[counter], ModelElement::getId(), RisingEdge);
+		if (descr == FallingEdge)
+			Event::create(this, momentsOfChange[counter], ModelElement::getId(),
+					RisingEdge);
 		else
-			Event::create(this, momentsOfChange[counter], ModelElement::getId(), FallingEdge);
+			Event::create(this, momentsOfChange[counter], ModelElement::getId(),
+					FallingEdge);
 		counter++;
 	}
 
@@ -64,15 +63,15 @@ void ArbitrarySource::notify(Description descr)
 
 void ArbitrarySource::turnOn()
 {
-	Time t=0;
+	Time t = 0;
 
-	if(initialValue==0)
+	if (initialValue == 0)
 	{
 		Event::create(this, t, ModelElement::getId(), FallingEdge);
 		changeOutPinVal();
 	}
 	else
-	{		
+	{
 		Event::create(this, t, ModelElement::getId(), RisingEdge);
 	}
 

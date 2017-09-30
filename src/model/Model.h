@@ -9,7 +9,6 @@
 //
 //
 
-
 #if !defined(_MODEL_H)
 #define _MODEL_H
 
@@ -46,4 +45,4 @@ private:
 	vector<ModelElement*> elements;
 };
 
-#endif  //_MODEL_H
+#endif  //_MODEL_H

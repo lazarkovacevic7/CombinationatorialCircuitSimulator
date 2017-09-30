@@ -9,25 +9,23 @@
 //
 //
 
-
 #include "NOT.h"
 
 void NOT::process()
 {
-	SignalValue s=(!getInPinVal(0));
+	SignalValue s = (!getInPinVal(0));
 	setOutPinValDemo(s);
 }
 
-
-NOT::NOT()
-:	DigitalGate(0.012, 0.008)
+NOT::NOT() :
+		DigitalGate(0.012, 0.008)
 {
 
 }
 
 void NOT::readInputPins()
 {
-	setInPinVal(0,DigitalGate::source[0]->getOutPinVal());
+	setInPinVal(0, DigitalGate::source[0]->getOutPinVal());
 }
 
 bool NOT::inputsShortened()

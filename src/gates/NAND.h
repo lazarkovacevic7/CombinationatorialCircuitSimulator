@@ -9,13 +9,12 @@
 //
 //
 
-
 #if !defined(_NAND_H)
 #define _NAND_H
 
 #include "DigitalGate.h"
 
-class NAND : public DigitalGate
+class NAND: public DigitalGate
 {
 public:
 
@@ -28,4 +27,4 @@ protected:
 	void process();		// redefiniton
 };
 
-#endif  //_NAND_H
+#endif  //_NAND_H

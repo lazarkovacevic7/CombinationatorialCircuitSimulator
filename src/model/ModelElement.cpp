@@ -9,18 +9,17 @@
 //
 //
 
-
 #include "ModelElement.h"
 
-ModelElement::ModelElement()
-:	id(0)
+ModelElement::ModelElement() :
+		id(0)
 {
 
 }
 
 void ModelElement::setId(ID Id)
 {
-	id=Id;
+	id = Id;
 }
 
 ID ModelElement::getId()

@@ -9,11 +9,10 @@
 //
 //
 
-
 #include "Data.h"
 
-Data::Data()
-:	simulationTime(0), numberOfElements(0), timeOfFirstEvent(-1)
+Data::Data() :
+		simulationTime(0), numberOfElements(0), timeOfFirstEvent(-1)
 {
 
 }
@@ -35,12 +34,12 @@ unsigned int Data::getNumberOfElements()
 
 void Data::setNumberOfElements(unsigned int num)
 {
-	numberOfElements=num;
+	numberOfElements = num;
 }
 
 void Data::setSimTime(Time t)
 {
-	simulationTime=t;
+	simulationTime = t;
 }
 
 Time Data::getSimTime()
@@ -50,12 +49,12 @@ Time Data::getSimTime()
 
 void Data::deleteElement(unsigned int i)			// ?
 {
-	elements.erase(elements.begin()+i);
+	elements.erase(elements.begin() + i);
 }
 
 void Data::addConnDescr(ConnectionDescription* cd)
 {
-		connDescr.push_back(cd);
+	connDescr.push_back(cd);
 }
 
 vector<ConnectionDescription*> Data::getConnDescr()
@@ -75,13 +74,13 @@ string Data::getFileName()
 
 void Data::setFileName(char* n)
 {
-	name=string(n);
+	name = string(n);
 }
 
 void Data::setOutPath(char* path)
 {
-	if(path==0)
-		outPath="\0";
+	if (path == 0)
+		outPath = "\0";
 	else
 		outPath = string(path);
 }
@@ -91,23 +90,22 @@ string Data::getOutPath()
 	return outPath;
 }
 
-
 Data::~Data()
 {
-	for(unsigned int i=0; i<elements.size();i++)
+	for (unsigned int i = 0; i < elements.size(); i++)
 		delete elements[i];
 
-	for(unsigned int i=0; i<connDescr.size();i++)
+	for (unsigned int i = 0; i < connDescr.size(); i++)
 		delete connDescr[i];
 }
 
 void Data::setTOFE(Time t)
 {
-	if(timeOfFirstEvent==-1)
-		timeOfFirstEvent=t;
+	if (timeOfFirstEvent == -1)
+		timeOfFirstEvent = t;
 	else
 	{
-		if(t<timeOfFirstEvent)
-			timeOfFirstEvent=t;
+		if (t < timeOfFirstEvent)
+			timeOfFirstEvent = t;
 	}
 }

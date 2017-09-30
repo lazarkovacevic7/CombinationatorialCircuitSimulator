@@ -9,7 +9,6 @@
 //
 //
 
-
 #if !defined(_VISITOR_H)
 #define _VISITOR_H
 
@@ -29,9 +28,8 @@ class Visitor
 {
 public:
 
-	
 	void visitModel(Model*);	// final
-	
+
 	// visiting elements. To be redefined
 	virtual void visitDigitalProbe(DigitalProbe*);
 	virtual void visitAndGate(AND*);
@@ -43,7 +41,7 @@ public:
 	virtual void visitClkSource(ClockSource*);
 	virtual void visitISource(ImpulsSource*);
 	virtual ~Visitor();
-	
+
 };
 
-#endif  //_VISITOR_H
+#endif  //_VISITOR_H

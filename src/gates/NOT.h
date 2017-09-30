@@ -9,18 +9,17 @@
 //
 //
 
-
 #if !defined(_NOT_H)
 #define _NOT_H
 
 #include "DigitalGate.h"
 
-class NOT : public DigitalGate
+class NOT: public DigitalGate
 {
 public:
 
 	NOT();
-	
+
 protected:
 
 	void process();		// redefiniton
@@ -33,4 +32,4 @@ protected:
 
 };
 
-#endif  //_NOT_H
+#endif  //_NOT_H

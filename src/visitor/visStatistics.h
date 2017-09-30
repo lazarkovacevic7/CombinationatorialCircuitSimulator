@@ -30,11 +30,11 @@
 #include "../gates/NOT.h"
 
 // visitor for statistics report
-class visStatistics : public Visitor
+class visStatistics: public Visitor
 {
 
 public:
-	
+
 	visStatistics();
 
 	// redefine
@@ -46,7 +46,7 @@ public:
 	void visitNotGate(NOT*);
 	void visitASource(ArbitrarySource*);
 	void visitClkSource(ClockSource*);
-	void visitISource(ImpulsSource*);	
+	void visitISource(ImpulsSource*);
 	void writeStats();			// write statistics
 
 	vector<StatDescr> descriptions;			// stats to be writen
@@ -62,8 +62,8 @@ private:
 	unsigned int ASourceNum;
 	unsigned int ClkSourceNum;
 	unsigned int ISourceNum;
-	unsigned int probeNum;	
+	unsigned int probeNum;
 
 };
 
-#endif  //_VISSTATISTICS_H
+#endif  //_VISSTATISTICS_H

@@ -9,7 +9,6 @@
 //
 //
 
-
 #if !defined(_DIGITALPROBE_H)
 #define _DIGITALPROBE_H
 
@@ -21,7 +20,7 @@
 using namespace std;
 
 // probe
-class DigitalProbe : public ModelElement
+class DigitalProbe: public ModelElement
 {
 public:
 
@@ -31,7 +30,6 @@ public:
 	void acceptSignal();		// redefiniton		
 	void notify(Description);		// redefiniton. no function
 	void acceptVisitor(Visitor*);		// visitor
-
 
 	void setSource(ModelElement*);			// redefiniton
 	void setTarget(ModelElement*);			// redefiniton. no function
@@ -50,8 +48,8 @@ protected:
 	void process();		// helper. Records signal changes
 
 	void addChange(SignalChange);
-	
-private:	
+
+private:
 
 	vector<SignalChange> changes;
 
@@ -60,9 +58,8 @@ private:
 
 	// delays
 	Time delay0to1;
-	Time delay1to0;		
+	Time delay1to0;
 
 };
 
-
-#endif  //_DIGITALPROBE_H
+#endif  //_DIGITALPROBE_H

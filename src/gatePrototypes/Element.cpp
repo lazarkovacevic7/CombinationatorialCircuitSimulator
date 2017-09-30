@@ -9,19 +9,18 @@
 //
 //
 
-
 #include "Element.h"
 
-Element::Element()
-:	type(0), id(0)
+Element::Element() :
+		type(0), id(0)
 {
 
 }
 
 Element::Element(Type t, ID i)
 {
-	type=t;
-	id=i;
+	type = t;
+	id = i;
 }
 
 ID Element::getId()
@@ -36,7 +35,7 @@ Type Element::getType()
 
 void Element::setID(ID i)
 {
-	id=i;
+	id = i;
 }
 
 Element::~Element()

@@ -12,38 +12,39 @@ Error* Error::Instance()
 	return &e;
 }
 
-string Error::getError(int lineNum) 
+string Error::getError(int lineNum)
 {
 	// TODO this is not good. Make JSON parser of ini file?
 	ifstream errorFile("C:\\errors.txt", ios::in);
-		
-	if(!errorFile.is_open())
+
+	if (!errorFile.is_open())
 	{
-		cout	<<"Error code file couldn't be open!"
-				<<endl;
+		cout << "Error code file couldn't be open!" << endl;
 	}
-		
+
 	char* buffer = new char[__MAXLENGTH];
 
-	for(int i=1; ;i++)
+	for (int i = 1;; i++)
 	{
 
-		if(errorFile.eof()) break;
+		if (errorFile.eof())
+			break;
 
 		errorFile.getline(buffer, __MAXLENGTH);
 
 		string message = string(buffer);
 
-		message = message.substr(2, message.length()-2);
+		message = message.substr(2, message.length() - 2);
 
-		message = "ERROR: "+ message;
+		message = "ERROR: " + message;
 
-		if(i==lineNum) 
-			return message;		
+		if (i == lineNum)
+			return message;
 
 	}
 
 	delete buffer;
 	errorFile.close();
 	return "\nError code not found!";
-};
+}
+;

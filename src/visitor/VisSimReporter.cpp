@@ -9,14 +9,12 @@
 //
 //
 
-
 #include "VisSimReporter.h"
 #include <sstream>
 
 using namespace std;
 
-
-void VisSimReporter::visitDigitalProbe(DigitalProbe*  digp)
+void VisSimReporter::visitDigitalProbe(DigitalProbe* digp)
 {
 	string name = Reader::Instance()->getData()->getFileName();
 	string path = Reader::Instance()->getData()->getOutPath();
@@ -27,14 +25,14 @@ void VisSimReporter::visitDigitalProbe(DigitalProbe*  digp)
 	convert << nnum;
 	num = convert.str();
 
-	if(path.empty())
+	if (path.empty())
 	{
 		writeChanges(cout, digp);
 	}
 
 	else
 	{
-		string outFileName=path + "sonda_" /*+ name*/ + num + ".log";
+		string outFileName = path + "sonda_" /*+ name*/+ num + ".log";
 
 		ofstream outFile(outFileName.c_str(), ios::out);
 
@@ -47,56 +45,48 @@ void VisSimReporter::visitDigitalProbe(DigitalProbe*  digp)
 void VisSimReporter::writeChanges(ostream& output, DigitalProbe* dp)
 {
 
-    stringstream time;
-    stringstream direction;
+	stringstream time;
+	stringstream direction;
 
-    // get length of time string for tab count formating output
-    int curr_time_size=0;
+	// get length of time string for tab count formating output
+	int curr_time_size = 0;
 
-	for(unsigned int i = 0; i<dp->getChanges().size();i++)
+	for (unsigned int i = 0; i < dp->getChanges().size(); i++)
 	{
 
-		direction	   << dp->getChanges()[i].prevValue
-					   << "->"
-					   << dp->getChanges()[i].nextValue;
+		direction << dp->getChanges()[i].prevValue << "->"
+				<< dp->getChanges()[i].nextValue;
 
-        stringstream time_hlp;
+		stringstream time_hlp;
 
-        time_hlp       << fixed
-                       << setprecision(3)
-                       << dp->getChanges()[i].timeOfChange
-                       << "us";
+		time_hlp << fixed << setprecision(3) << dp->getChanges()[i].timeOfChange
+				<< "us";
 
-        curr_time_size = time_hlp.str().size();
+		curr_time_size = time_hlp.str().size();
 
-	    time		   << time_hlp.str();
+		time << time_hlp.str();
 
-        if ((i+1)%4 == 0 || i==dp->getChanges().size()-1)
-        {
-            output  << direction.str()
-                    << endl
-                    << time.str();
-            if (i!=dp->getChanges().size()-1)
+		if ((i + 1) % 4 == 0 || i == dp->getChanges().size() - 1)
+		{
+			output << direction.str() << endl << time.str();
+			if (i != dp->getChanges().size() - 1)
 
-            output  << endl
-                    << endl
-                    << endl;
+				output << endl << endl << endl;
 
+			time.str("");
+			time.clear();
+			direction.str("");
+			direction.clear();
+		}
+		else
+		{
+			direction << "\t\t";
 
-            time.str("");
-            time.clear();
-            direction.str("");
-            direction.clear();
-        }
-        else
-        {
-            direction << "\t\t";
-
-            if(curr_time_size < 8)
-                time << "\t\t";
-            else 
-                time << "\t";
-        }
+			if (curr_time_size < 8)
+				time << "\t\t";
+			else
+				time << "\t";
+		}
 
 	}
 }

@@ -9,7 +9,6 @@
 //
 //
 
-
 #if !defined(_ELEMENT_H)
 #define _ELEMENT_H
 
@@ -20,14 +19,14 @@ class Element
 {
 public:
 
-	virtual ~Element();			
+	virtual ~Element();
 
 	ID getId();
 	void setID(ID);
 
 	Type getType();
 
-	virtual void createConcreteElement()=0;		// used for polymorphism creation of circuit real elements
+	virtual void createConcreteElement()=0;	// used for polymorphism creation of circuit real elements
 protected:
 
 	Element(Type, ID);
@@ -41,4 +40,4 @@ private:
 	ID id;			// element id
 };
 
-#endif  //_ELEMENT_H
+#endif  //_ELEMENT_H

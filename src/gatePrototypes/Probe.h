@@ -9,23 +9,22 @@
 //
 //
 
-
 #if !defined(_PROBE_H)
 #define _PROBE_H
 
 #include "Element.h"
 
 // dummy probe
-class Probe : public Element
+class Probe: public Element
 {
 public:
-	
+
 	Probe();
-	Probe(ID, Type);		
+	Probe(ID, Type);
 	~Probe();
 
 	void createConcreteElement();			// redefiniton
 
 };
 
-#endif  //_PROBE_H
+#endif  //_PROBE_H

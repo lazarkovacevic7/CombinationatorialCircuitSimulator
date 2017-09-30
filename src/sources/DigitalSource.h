@@ -9,7 +9,6 @@
 //
 //
 
-
 #if !defined(_DIGITALSOURCE_H)
 #define _DIGITALSOURCE_H
 #define SOURCE_MAXNUMOFTARGETS 100
@@ -18,20 +17,19 @@
 #include "../gates/DigitalGate.h"
 
 // digital source abstraction
-class DigitalSource : public ModelElement
+class DigitalSource: public ModelElement
 {
 public:
 
 	virtual ~DigitalSource();
 
-	virtual void acceptSignal();			// redefiniton. no function since source creates signals
-	
+	virtual void acceptSignal();// redefiniton. no function since source creates signals
+
 	void setTarget(ModelElement* t);		// redefiniton
-	void setSource(ModelElement* t);		// redefiniton. no function since source has no input pins
+	void setSource(ModelElement* t);// redefiniton. no function since source has no input pins
 
 	Time getDelay0to1();			// redefiniton
 	Time getDelay1to0();			// redefiniton
-	
 
 	void changeOutPinVal();			// toggle out pin value
 	SignalValue getOutPinVal();		// redefiniton
@@ -40,17 +38,16 @@ public:
 
 	ModelElement* target[SOURCE_MAXNUMOFTARGETS];
 
-		
 protected:
 
 	DigitalSource();
 	// helper method to notify. Changes signal and puts it onto targets
-	virtual void process();	
+	virtual void process();
 
 	// helper method. Creates first event when source is created and puts it into sched. To be redefined. TODO: is this really needed?
 	virtual void turnOn()=0;
-	
-private:	
+
+private:
 
 	unsigned int numberOfTargets;
 	SignalValue outPinVal;
@@ -58,4 +55,4 @@ private:
 	Time delay1to0;
 };
 
-#endif  //_DIGITALSOURCE_H
+#endif  //_DIGITALSOURCE_H

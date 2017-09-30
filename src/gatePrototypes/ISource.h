@@ -9,7 +9,6 @@
 //
 //
 
-
 #if !defined(_ISOURCE_H)
 #define _ISOURCE_H
 
@@ -19,14 +18,14 @@
 #include "../model/Reader.h"
 
 // dummy impuls source
-class ISource : public Source
+class ISource: public Source
 {
 public:
 
 	ISource();
 	~ISource();
 
-	void setImpulsLevel(SignalValue lev);		
+	void setImpulsLevel(SignalValue lev);
 	SignalValue getImpulsLevel();
 
 	void setFrequency(Frequency f);
@@ -45,4 +44,4 @@ private:
 
 };
 
-#endif  //_ISOURCE_H
+#endif  //_ISOURCE_H

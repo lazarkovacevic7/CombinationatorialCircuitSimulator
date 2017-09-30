@@ -9,7 +9,6 @@
 //
 //
 
-
 #if !defined(_GATE_H)
 #define _GATE_H
 
@@ -22,16 +21,16 @@
 #include "Element.h"
 
 // dummy class for gate generation. TODO: is this unavoidable? TODO: change name.
-class Gate : public Element
+class Gate: public Element
 {
 public:
 
 	Gate();
-	Gate(ID, Type);		
+	Gate(ID, Type);
 	~Gate();
 
 	void createConcreteElement();		// redefinition
 
 };
 
-#endif  //_GATE_H
+#endif  //_GATE_H

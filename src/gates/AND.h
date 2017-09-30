@@ -9,24 +9,23 @@
 //
 //
 
-
 #if !defined(_AND_H)
 #define _AND_H
 
 #include "DigitalGate.h"
 
-class AND : public DigitalGate
+class AND: public DigitalGate
 {
 public:
 
 	AND();
 
 	void acceptVisitor(Visitor*);		// visitor
-	
+
 protected:
 
 	void process();			// redefinition
 
 };
 
-#endif  //_AND_H
+#endif  //_AND_H

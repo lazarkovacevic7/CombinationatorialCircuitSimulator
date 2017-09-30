@@ -9,7 +9,6 @@
 //
 //
 
-
 #if !defined(_ARBITRARYSOURCE_H)
 #define _ARBITRARYSOURCE_H
 
@@ -20,7 +19,7 @@
 #include "../model/Model.h"
 
 // class for source with manual configuration
-class ArbitrarySource : public DigitalSource
+class ArbitrarySource: public DigitalSource
 {
 public:
 
@@ -49,4 +48,4 @@ private:
 	unsigned int counter;			//counter of signal changes
 };
 
-#endif  //_ARBITRARYSOURCE_H
+#endif  //_ARBITRARYSOURCE_H
