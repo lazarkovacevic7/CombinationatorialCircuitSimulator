@@ -29,11 +29,7 @@ public:
 
 protected:
 
-	// TODO: move to cpp?
-	Builder()
-	{
-
-	}
+	Builder();
 
 	void link(ID, unsigned int, ID, unsigned int );		// links model elements based on IDs. TODO: search for improvement
 

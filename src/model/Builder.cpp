@@ -17,6 +17,11 @@ Builder::~Builder()
 
 }
 
+Builder::Builder()
+{
+
+}
+
 Builder* Builder::Instance() {
 
 	static Builder instance;
