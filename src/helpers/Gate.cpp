@@ -30,33 +30,33 @@ Gate::~Gate()
 
 // TODO: should this be wrapped to a design pattern?
 
-void Gate::spawnThisElmenet() 
+void Gate::spawnThisElmenet()
 {
-	if(Element::getType()==1)
+	if(Element::getType()==TypeAndGate)
 	{
 		AND* a = new AND();
 		a->setId(Element::getId());
 		Model::Instance()->add(a);
 	}
-		if(Element::getType()==4)
+	if(Element::getType()==TypeNandGate)
 	{
 		NAND* a = new NAND();
 		a->setId(Element::getId());
 		Model::Instance()->add(a);
 	}
-	if(Element::getType()==3)
+	if(Element::getType()==TypeNotGate)
 	{
 		NOT* a = new NOT();
 		a->setId(Element::getId());
 		Model::Instance()->add(a);
 	}
-	if(Element::getType()==2)
+	if(Element::getType()==TypeOrGate)
 	{
 		OR* a = new OR();
 		a->setId(Element::getId());
 		Model::Instance()->add(a);
 	}
-	if(Element::getType()==0)
+	if(Element::getType()==TypeNorGate)
 	{
 		NOR* a = new NOR();
 		a->setId(Element::getId());

@@ -92,13 +92,13 @@ void Reader::listing(char* fileName)
 		Type type = atoi(stype.c_str());
 		
 											
-		if(type==1 || type==2 || type==3 || type==4 || type==0)		
-			 data->addElement(new Gate(id,type));
+		if(type==TypeAndGate || type==TypeNandGate || type==TypeNotGate || type==TypeOrGate || type==TypeNorGate)
+			data->addElement(new Gate(id,type));
 		
-		if(type==5)		
-			data->addElement(new Source(id,type));	
+		if(type==TypeSource)
+			data->addElement(new Source(id,type));
 		
-		if(type==6) 		
+		if(type==TypeProbe)
 			data->addElement(new Probe(id,type));
 		
 		
@@ -176,7 +176,7 @@ void Reader::sourceInitialize(unsigned int id, string descr)
 
 	Frequency freq = atoi(descr.c_str());
 
-	if(type==3)
+	if(type==TypeClkSource)
 	{
 
 		for(unsigned int i=0; i<data->getElements().size();i++)
@@ -195,7 +195,7 @@ void Reader::sourceInitialize(unsigned int id, string descr)
 		
 	}
 	
-	if(type==1)
+	if(type==TypeImpulsSource)
 	{
 		string siVal=descr.substr(0,descr.find(' '));		
 		descr=descr.substr(descr.find(' ')+1);
@@ -225,7 +225,7 @@ void Reader::sourceInitialize(unsigned int id, string descr)
 		}
 		
 	}
-	if(type==2)
+	if(type==TypeArbitrarySource)
 	{
 		string siVal=descr.substr(0, descr.find(' '));
 		descr=descr.substr(descr.find(' ')+1);

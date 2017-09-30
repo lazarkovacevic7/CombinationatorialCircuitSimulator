@@ -24,7 +24,7 @@
 
 using namespace std;
 
-// keeps data read from connection description file. Contains list of dummy elements based on which real elements will be created polymorphicaly.
+// keeps data read from input file. Contains list of dummy elements based on which real elements will be created polymorphicaly.
 // TODO: is this optimized and good?
 class Data
 {

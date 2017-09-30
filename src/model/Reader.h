@@ -17,6 +17,7 @@
 #include "../helpers/CLKSource.h"
 #include "../helpers/ASource.h"
 #include "../helpers/ISource.h"
+#include "typedefs.h"
 
 #include <iostream>
 #include <fstream>
