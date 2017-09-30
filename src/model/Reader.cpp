@@ -41,6 +41,7 @@ void Reader::readData(char* fileName, char* outPath)
 
 void Reader::listing(char* fileName)
 {
+	// parse simulation time and num of elements
 	ifstream inputFile(fileName, ios::in);
 	char* buffer = new char[255];
 	inputFile.getline(buffer,255);
@@ -57,7 +58,7 @@ void Reader::listing(char* fileName)
 
 	bool tab=false;
 	
-
+	// parse elements
 	for(unsigned int i=0; i<num; i++) 
 	{
 		inputFile.getline(buffer, 255);
@@ -92,7 +93,7 @@ void Reader::listing(char* fileName)
 		
 											
 		if(type==1 || type==2 || type==3 || type==4 || type==0)		
-			 data->addElement(new Gate(id,type));		// gate count
+			 data->addElement(new Gate(id,type));
 		
 		if(type==5)		
 			data->addElement(new Source(id,type));	
@@ -103,6 +104,7 @@ void Reader::listing(char* fileName)
 		
 	}
 
+	// parse connection descriptions
 	while(true)
 	{		
 		inputFile.getline(buffer, 256);
@@ -143,6 +145,7 @@ void Reader::listing(char* fileName)
 
 	}
 
+	// determine source type create concrete sources
 	while (!BUFFER.empty())
 	{
 		
