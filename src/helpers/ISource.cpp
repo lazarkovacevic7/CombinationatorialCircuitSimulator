@@ -17,7 +17,7 @@ ISource::~ISource()
 
 }
 
-void ISource::spawnThisElmenet()
+void ISource::createConcreteElement()
 {
 	ImpulsSource* s = new ImpulsSource(Element::getId(), frequency, impulsLevel, impulsActiveTime);
 

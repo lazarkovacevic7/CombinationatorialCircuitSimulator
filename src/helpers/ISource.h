@@ -35,7 +35,7 @@ public:
 	void setImpulsTime(Time iTime);
 	Time getImpulsTime();
 
-	void spawnThisElmenet();			// redefiniton
+	void createConcreteElement();			// redefiniton
 
 private:
 

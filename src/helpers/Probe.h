@@ -24,7 +24,7 @@ public:
 	Probe(ID, Type);		
 	~Probe();
 
-	void spawnThisElmenet();			// redefiniton
+	void createConcreteElement();			// redefiniton
 
 };
 

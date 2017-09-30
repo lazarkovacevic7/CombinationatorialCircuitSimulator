@@ -29,7 +29,7 @@ public:
 	void setFrequency(Frequency);
 	Frequency getFrequency();
 
-	void spawnThisElmenet();		// redefinition
+	void createConcreteElement();		// redefinition
 	
 private:
 

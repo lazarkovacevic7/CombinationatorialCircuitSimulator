@@ -24,7 +24,7 @@ public:
 	Source(ID, Type);
 	~Source();
 	
-	virtual void spawnThisElmenet();		// redefinition
+	virtual void createConcreteElement();		// redefinition
 
 };
 

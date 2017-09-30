@@ -19,7 +19,7 @@ Probe::~Probe()
 
 }
 
-void Probe::spawnThisElmenet() 
+void Probe::createConcreteElement() 
 {
 	DigitalProbe* p = new DigitalProbe();
 	p->setId(Element::getId());

@@ -49,7 +49,7 @@ ASource::~ASource()
 	
 }
 
-void ASource::spawnThisElmenet()
+void ASource::createConcreteElement()
 {
 	ArbitrarySource* s = new ArbitrarySource(initialValue, momentsOfChange, numberOfChanges);
 

@@ -30,7 +30,7 @@ public:
 	Gate(ID, Type);		
 	~Gate();
 
-	void spawnThisElmenet();		// redefinition
+	void createConcreteElement();		// redefinition
 
 };
 

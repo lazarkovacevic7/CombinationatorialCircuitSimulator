@@ -30,7 +30,7 @@ Gate::~Gate()
 
 // TODO: should this be wrapped to a design pattern?
 
-void Gate::spawnThisElmenet()
+void Gate::createConcreteElement()
 {
 	if(Element::getType()==TypeAndGate)
 	{

@@ -36,10 +36,10 @@ void Reader::readData(char* fileName, char* outPath)
 {
 	data->setOutPath(outPath);
 	data->setFileName(fileName);
-	listing(fileName);
+	parseInputFile(fileName);
 }
 
-void Reader::listing(char* fileName)
+void Reader::parseInputFile(char* fileName)
 {
 	// parse simulation time and num of elements
 	ifstream inputFile(fileName, ios::in);
@@ -145,7 +145,7 @@ void Reader::listing(char* fileName)
 
 	}
 
-	// determine source type create concrete sources
+	// determine source type create prototype sources
 	while (!BUFFER.empty())
 	{
 		

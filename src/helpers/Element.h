@@ -27,7 +27,7 @@ public:
 
 	Type getType();
 
-	virtual void spawnThisElmenet()=0;		// used for polymorphism creation of circuit real elements
+	virtual void createConcreteElement()=0;		// used for polymorphism creation of circuit real elements
 protected:
 
 	Element(Type, ID);

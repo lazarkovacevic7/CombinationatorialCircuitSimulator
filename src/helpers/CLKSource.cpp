@@ -34,7 +34,7 @@ CLKSource::~CLKSource()
 
 }
 
-void CLKSource::spawnThisElmenet()
+void CLKSource::createConcreteElement()
 {
 	ClockSource* s = new ClockSource(frequency);
 	s->setId(Element::getId());

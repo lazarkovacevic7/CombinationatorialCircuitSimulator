@@ -37,7 +37,7 @@ public:
 
 	unsigned int getNumOfChanges();	
 
-	void spawnThisElmenet();		// redefinition
+	void createConcreteElement();		// redefinition
 
 private:
 

@@ -42,7 +42,7 @@ protected:
 
 	Reader();
 
-	void listing(char*);		// helper for file parsing
+	void parseInputFile(char*);		// helper for file parsing
 
 	void sourceInitialize(unsigned int, string);		// helper, creates dummy elements? TODO: examine
 	

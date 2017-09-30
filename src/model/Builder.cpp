@@ -32,7 +32,7 @@ void Builder::buildModel(Data* data)
 {
 	// spawn elements
 	for(unsigned int i=0; i<data->getNumberOfElements();i++)		
-		data->getElements()[i]->spawnThisElmenet();
+		data->getElements()[i]->createConcreteElement();
 
 	//link elements
 	for(unsigned int i=0; i<data->getConnDescr().size(); i++)		
