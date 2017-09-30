@@ -16,6 +16,7 @@
 #include "Source.h"
 #include "../model/Model.h"
 #include "../sources/ClockSource.h"
+#include "../model/Reader.h"
 
 // dummy clock source
 class CLKSource : public Source

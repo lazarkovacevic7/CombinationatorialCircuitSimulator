@@ -18,14 +18,13 @@
 #include "DigitalSource.h"
 #include "../scheduler//Event.h"
 #include "../model/Model.h"
-#include "../model/Reader.h"
 
 // class for source with manual configuration
 class ArbitrarySource : public DigitalSource
 {
 public:
 
-	ArbitrarySource(ID, SignalValue, Time*, unsigned int);
+	ArbitrarySource(SignalValue, Time*, unsigned int);
 	~ArbitrarySource();
 
 	void notify(Description);		// redefinition

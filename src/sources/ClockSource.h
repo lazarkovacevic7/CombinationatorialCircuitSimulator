@@ -16,14 +16,13 @@
 #include "DigitalSource.h"
 #include "../scheduler/Event.h"
 #include "../model/Model.h"
-#include "../model/Reader.h"
 
 // clock source
 class ClockSource : public DigitalSource
 {
 public:
 
-	ClockSource(ID, Frequency);
+	ClockSource(Frequency);
 	~ClockSource();
 
 	void notify(Description);			// redefinition	

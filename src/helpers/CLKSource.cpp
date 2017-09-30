@@ -36,5 +36,10 @@ CLKSource::~CLKSource()
 
 void CLKSource::spawnThisElmenet()
 {
-	ClockSource* s = new ClockSource(Element::getId(), frequency);
+	ClockSource* s = new ClockSource(frequency);
+	s->setId(Element::getId());
+	Model::Instance()->add(s);
+
+	Time firstEvent = 1.0/(2*frequency)*1000000;
+	Reader::Instance()->getData()->setTOFE(firstEvent);
 }

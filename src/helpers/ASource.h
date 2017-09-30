@@ -17,6 +17,7 @@
 #include "Source.h"
 #include "../sources/ArbitrarySource.h"
 #include "../model/Model.h"
+#include "../model/Reader.h"
 
 // dummy class for source with manual configuration
 class ASource : public Source

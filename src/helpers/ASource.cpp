@@ -51,7 +51,13 @@ ASource::~ASource()
 
 void ASource::spawnThisElmenet()
 {
-	ArbitrarySource* s = new ArbitrarySource(Element::getId(), initialValue, momentsOfChange, numberOfChanges);	
+	ArbitrarySource* s = new ArbitrarySource(initialValue, momentsOfChange, numberOfChanges);
+
+	s->setId(Element::getId());
+	Model::Instance()->add(s);
+
+	Time firstEvent = momentsOfChange[0];
+	Reader::Instance()->getData()->setTOFE(firstEvent);
 }
 
 

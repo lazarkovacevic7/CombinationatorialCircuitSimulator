@@ -15,12 +15,8 @@
 ImpulsSource::ImpulsSource(ID i, Frequency f, SignalValue val, Time t)
 :	DigitalSource(), impulsLevel(val), frequency(f), impulsActiveTime(t), flag(true)
 {
-	ModelElement::setId(i);
-	Model::Instance()->add(this);
-	turnOn();
 
-	Time firstEvent=impulsActiveTime;
-	Reader::Instance()->getData()->setTOFE(firstEvent);
+	turnOn();
 }
 
 void ImpulsSource::acceptVisitor(Visitor* v)

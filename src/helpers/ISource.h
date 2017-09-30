@@ -16,6 +16,7 @@
 #include "Source.h"
 #include "../model/Model.h"
 #include "../sources/ImpulsSource.h"
+#include "../model/Reader.h"
 
 // dummy impuls source
 class ISource : public Source

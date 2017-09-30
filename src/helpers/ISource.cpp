@@ -20,6 +20,12 @@ ISource::~ISource()
 void ISource::spawnThisElmenet()
 {
 	ImpulsSource* s = new ImpulsSource(Element::getId(), frequency, impulsLevel, impulsActiveTime);
+
+	s->setId(Element::getId());
+	Model::Instance()->add(s);
+
+	Time firstEvent=impulsActiveTime;
+	Reader::Instance()->getData()->setTOFE(firstEvent);
 }
 
 ISource::ISource():

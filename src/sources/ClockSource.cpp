@@ -12,15 +12,10 @@
 
 #include "ClockSource.h"
 
-ClockSource::ClockSource(ID i, Frequency f)
+ClockSource::ClockSource(Frequency f)
 :	DigitalSource(), frequency(f)
 {
-	ModelElement::setId(i);
-	Model::Instance()->add(this);
 	turnOn();
-	
-	Time firstEvent = 1.0/(2*frequency)*1000000;
-	Reader::Instance()->getData()->setTOFE(firstEvent);
 }
 
 Frequency ClockSource::getFrequency()

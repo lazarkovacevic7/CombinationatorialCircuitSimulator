@@ -12,20 +12,15 @@
 
 #include "ArbitrarySource.h"
 
-ArbitrarySource::ArbitrarySource(ID i, SignalValue val, Time* moments, unsigned int num):
+ArbitrarySource::ArbitrarySource(SignalValue val, Time* moments, unsigned int num):
 	DigitalSource(),
 	initialValue(val),
 	numberOfChanges(num),
 	counter(0)
 {
-	ModelElement::setId(i);
 	for(unsigned int j=0; j<numberOfChanges; j++)
 		momentsOfChange[j]=moments[j];
-	Model::Instance()->add(this);
 	turnOn();
-
-	Time firstEvent = momentsOfChange[0];
-	Reader::Instance()->getData()->setTOFE(firstEvent);	
 }
 
 SignalValue ArbitrarySource::getInitialValue()
