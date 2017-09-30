@@ -14,9 +14,9 @@
 #define _READER_H
 
 #include "Data.h"
-#include "../helpers/CLKSource.h"
-#include "../helpers/ASource.h"
-#include "../helpers/ISource.h"
+#include "../gatePrototypes/CLKSource.h"
+#include "../gatePrototypes/ASource.h"
+#include "../gatePrototypes/ISource.h"
 #include "typedefs.h"
 
 #include <iostream>

@@ -14,10 +14,10 @@
 #define _DATA_H
 #define MAXNUMOFELEMENTS 100
 
-#include "../helpers/Element.h"
-#include "../helpers/Probe.h"
-#include "../helpers/Gate.h"
-#include "../helpers/Source.h"
+#include "../gatePrototypes/Element.h"
+#include "../gatePrototypes/Probe.h"
+#include "../gatePrototypes/Gate.h"
+#include "../gatePrototypes/Source.h"
 #include "ConnectionDescription.h"
 #include <string>
 #include <vector>
