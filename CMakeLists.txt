@@ -15,6 +15,11 @@ add_subdirectory(src/scheduler)
 add_subdirectory(src/sources)
 add_subdirectory(src/visitor)
 
+set_target_properties(main
+  PROPERTIES
+    ADDITIONAL_CLEAN_FILES "${CMAKE_SOURCE_DIR}/test_results/"
+)
+
 set(ENABLE_TESTS 1)
 
 if (${ENABLE_TESTS})
