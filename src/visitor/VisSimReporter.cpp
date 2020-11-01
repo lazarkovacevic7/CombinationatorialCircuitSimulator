@@ -62,7 +62,7 @@ void VisSimReporter::writeChanges(ostream& output, DigitalProbe* dp)
 		time_hlp << fixed << setprecision(3) << dp->getChanges()[i].timeOfChange
 				<< "us";
 
-		curr_time_size = time_hlp.str().size();
+		curr_time_size = (int) time_hlp.str().size();
 
 		time << time_hlp.str();
 
