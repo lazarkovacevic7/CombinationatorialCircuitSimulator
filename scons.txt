@@ -1,0 +1,4 @@
+1) py -3 -m pip install scons
+2) add to path python3\Scripts 
+3) install cpp compiler with visual studio
+4) 
